@@ -1,0 +1,11 @@
+{
+    "asset": "59557d165503b45409f9d19f8311dbc4",
+    "fileName": "0199af97-4976-78b8-b506-175b5091c562.pose.json",
+    "prompt": "falling mid air",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 978586251,
+    "w3CTraceId": "3fcd20b0f2e269a88efcbc4ff7a07c3d",
+    "isTrimmed": false
+}

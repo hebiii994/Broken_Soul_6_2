@@ -1,0 +1,13 @@
+{
+    "asset": "4fcf92e81a4fe244f9c6cd83bf1ed04c",
+    "fileName": "0199af98-3963-7632-9e59-579afcb5a1ec.wav",
+    "prompt": "jump male sad voice",
+    "negativePrompt": "",
+    "model": "0ee39b33-2893-4e0f-8c46-0e0bdd4eda85",
+    "modelName": "Text to Sound",
+    "customSeed": -1,
+    "w3CTraceId": "b02cb1de553b24f71c74211b5360c053",
+    "duration": 1.0,
+    "autoTrim": true,
+    "hasReference": false
+}

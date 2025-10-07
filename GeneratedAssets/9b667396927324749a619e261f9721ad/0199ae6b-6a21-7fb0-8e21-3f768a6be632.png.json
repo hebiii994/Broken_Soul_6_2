@@ -1,0 +1,20 @@
+{
+    "asset": "9b667396927324749a619e261f9721ad",
+    "fileName": "0199ae6b-6a21-7fb0-8e21-3f768a6be632.png",
+    "prompt": "pixel art, VHS cassette with hand-labeled 'Home Videos 1994', personal nostalgic touch, slightly worn plastic case, intimate family memories, retro gaming collectible",
+    "negativePrompt": "no realistic rendering, no modern technology, no DVD, no CD, no futuristic design, no shiny surfaces, no background, no people, no hands, no bright colors, no text overlay except label, no glowing effects, no animation, no isometric view, no top-down view, no cartoon",
+    "model": "cb5a969e-e92a-4bae-a785-12300e3026a0",
+    "modelName": "Illustrated Platformer Environments",
+    "customSeed": -1,
+    "w3CTraceId": "12a0197f9e742d46e76ebb297dc924a6",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

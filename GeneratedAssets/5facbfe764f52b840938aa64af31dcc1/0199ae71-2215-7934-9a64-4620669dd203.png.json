@@ -1,0 +1,20 @@
+{
+    "asset": "5facbfe764f52b840938aa64af31dcc1",
+    "fileName": "0199ae71-2215-7934-9a64-4620669dd203.png",
+    "prompt": "\"pixel art, dreamlike ethereal background for dialogue choices, swirling memories and floating fragments, soft atmospheric fog, muted pastel colors transitioning between reality and dreams, nostalgic 1990s elements dissolving into abstract shapes, melancholic surreal landscape, gentle lighting effects",
+    "negativePrompt": "no realistic rendering, no bright colors, no sharp edges, no mechanical elements, no text, no UI elements, no characters, no faces, no detailed objects, no modern technology, no busy patterns, no cartoon style, no anime, no high contrast, no violence, no action scenes",
+    "model": "cb5a969e-e92a-4bae-a785-12300e3026a0",
+    "modelName": "Illustrated Platformer Environments",
+    "customSeed": -1,
+    "w3CTraceId": "f34609b63b7f2d5969f3c7e1f0ff57b7",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}
