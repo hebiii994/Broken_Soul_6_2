@@ -6,7 +6,11 @@ public class PlayerMoveState : PlayerState
 
     public override void Update()
     {
-
+        if (inputController.SlideInput)
+        {
+            stateMachine.ChangeState(new PlayerSlideState(stateMachine));
+            return;
+        }
         if (inputController.AttackInput)
         {
             stateMachine.ChangeState(new PlayerAttackState(stateMachine));

@@ -7,6 +7,9 @@ public class PlayerInputController : MonoBehaviour
     public bool IsRunning { get; private set; }
     public bool JumpInput { get; private set; }
     public bool AttackInput { get; private set; }
+    public bool SlideInput { get; private set; }
+    public bool InteractInput { get; private set; }
+
 
     private PlayerControls _playerControls;
 
@@ -25,6 +28,11 @@ public class PlayerInputController : MonoBehaviour
 
         _playerControls.Player.Jump.performed += ctx => JumpInput = true;
         _playerControls.Player.Attack.performed += ctx => AttackInput = true;
+
+        _playerControls.Player.Slide.performed += ctx => SlideInput = true;
+        _playerControls.Player.Slide.canceled += ctx => SlideInput = false;
+
+        _playerControls.Player.Interact.performed += ctx => InteractInput = true;
     }
 
     private void OnDisable()
@@ -35,5 +43,6 @@ public class PlayerInputController : MonoBehaviour
     {
         JumpInput = false;
         AttackInput = false;
+        InteractInput = false;
     }
 }

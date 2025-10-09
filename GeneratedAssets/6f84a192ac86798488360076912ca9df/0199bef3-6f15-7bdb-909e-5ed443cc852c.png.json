@@ -1,0 +1,20 @@
+{
+    "asset": "6f84a192ac86798488360076912ca9df",
+    "fileName": "0199bef3-6f15-7bdb-909e-5ed443cc852c.png",
+    "prompt": "pixel art, surreal mysterious door seen from the front, only the frame is visible, inside is pitch black void, faint glow around the door frame, atmosphere of memory and dream, eerie darkness beyond the threshold, facing directly towards the player, sense of depth and unknown, 90s inspired palette, melancholic and enigmatic mood",
+    "negativePrompt": "no realistic rendering, no side view, no open door, no visible handle, no keyhole, no windows, no light inside, no people, no symbols, no furniture, no background details, no text, no modern design, no cartoon style, no color spots inside, no fantasy creatures, no glowing eyes",
+    "model": "94c4260f-b988-40e7-b3d3-435b9f449bd0",
+    "modelName": "Flux.1 Dev",
+    "customSeed": -1,
+    "w3CTraceId": "d45899a6fb4bf8df83f121a839062f9c",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

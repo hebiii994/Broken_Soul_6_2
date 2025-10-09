@@ -1,9 +1,13 @@
 using UnityEngine;
 
-public class PlayerIdleState : PlayerState
+public class PlayerIdleState: PlayerState
 {
     public PlayerIdleState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
+    public override void Enter()
+    {
+        playerMovement.StopMovement();
+    }
     public override void Update()
     {
         if (inputController.AttackInput)

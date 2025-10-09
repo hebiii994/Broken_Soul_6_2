@@ -31,8 +31,11 @@ public class PlayerAnimator : MonoBehaviour
         _animator.SetFloat("MoveY", currentMoveInput.y);
         _animator.SetBool("IsMoving", isMoving);
         _animator.SetBool("IsRunning", _inputController.IsRunning);
+        _animator.SetBool("IsSliding", _inputController.SlideInput);
         _animator.SetFloat("IdleDirX", _lastMoveDirection.x);
         _animator.SetFloat("IdleDirY", _lastMoveDirection.y);
+        _animator.SetFloat("SlideDirX", _lastMoveDirection.x);
+        _animator.SetFloat("SlideDirY", _lastMoveDirection.y);
         _animator.SetBool("IsGrounded", _playerMovement.IsGrounded);
     }
     public void PlayAttackAnimation(Vector2 attackDirection)

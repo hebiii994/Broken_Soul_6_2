@@ -6,7 +6,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerMovement PlayerMovement { get; private set; }
     public PlayerAnimator PlayerAnimator { get; private set; }
     public PlayerCombat PlayerCombat { get; private set; }
-
+    public bool IsKnockedBack { get; set; }
     private PlayerState _currentState;
 
     private void Awake()
@@ -14,6 +14,7 @@ public class PlayerStateMachine : MonoBehaviour
         InputController = GetComponent<PlayerInputController>();
         PlayerMovement = GetComponent<PlayerMovement>();
         PlayerAnimator = GetComponent<PlayerAnimator>();
+        PlayerCombat = GetComponent<PlayerCombat>();
     }
 
     private void Start()
@@ -23,11 +24,13 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update()
     {
+        if (IsKnockedBack) return;
         _currentState?.Update();
     }
 
     private void FixedUpdate()
     {
+        if (IsKnockedBack) return;
         _currentState?.FixedUpdate();
     }
 

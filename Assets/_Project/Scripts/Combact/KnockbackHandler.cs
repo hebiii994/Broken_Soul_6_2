@@ -8,34 +8,25 @@ public class KnockbackHandler : MonoBehaviour
 
     private Rigidbody2D _rb;
     private Coroutine _knockbackCoroutine;
-    private bool _isBeingKnockedBack = false;
+    private PlayerStateMachine _stateMachine;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _stateMachine = GetComponent<PlayerStateMachine>();
     }
 
     public void ApplyKnockback(Transform damageSource)
     {
-        if (_isBeingKnockedBack)
-        {
-            return;
-        }
-        if (_knockbackCoroutine != null)
-        {
-            StopCoroutine(_knockbackCoroutine);
-        }
+        if (_stateMachine.IsKnockedBack) return;
+
+        if (_knockbackCoroutine != null) StopCoroutine(_knockbackCoroutine);
         _knockbackCoroutine = StartCoroutine(KnockbackRoutine(damageSource));
     }
 
     private IEnumerator KnockbackRoutine(Transform damageSource)
     {
-        _isBeingKnockedBack = true;
-        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = false;
-        }
+        _stateMachine.IsKnockedBack = true;
 
         Vector2 direction = (transform.position - damageSource.position).normalized;
         direction.y += 0.2f;
@@ -47,12 +38,7 @@ public class KnockbackHandler : MonoBehaviour
 
         _rb.linearVelocity = Vector2.zero;
 
-        if (playerMovement != null)
-        {
-            playerMovement.ResetInput();
-            playerMovement.enabled = true;
-        }
-        _isBeingKnockedBack = false;
+        _stateMachine.IsKnockedBack = false;
         _knockbackCoroutine = null;
     }
 }
