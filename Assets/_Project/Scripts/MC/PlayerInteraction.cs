@@ -8,19 +8,15 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Awake()
     {
-        _narrativeManager = FindFirstObjectByType<NarrativeManager>();
+        _narrativeManager = FindAnyObjectByType<NarrativeManager>();
         _inputController = GetComponent<PlayerInputController>();
     }
 
     private void Update()
     {
-        if (_inputController.InteractInput)
+        if (_inputController.InteractInput && _nearbyDoor != null)
         {
-
-            if (_nearbyDoor != null)
-            {
-                _narrativeManager.MakeChoice(_nearbyDoor.choiceIndex);
-            }
+            _narrativeManager.MakeChoice(_nearbyDoor.choiceIndex);
         }
     }
 
@@ -35,7 +31,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<DoorInteractor>() == _nearbyDoor)
+
+        if (_nearbyDoor != null && other.gameObject == _nearbyDoor.gameObject)
         {
             Debug.Log("Uscito dal trigger della porta: " + other.name);
             _nearbyDoor = null;
