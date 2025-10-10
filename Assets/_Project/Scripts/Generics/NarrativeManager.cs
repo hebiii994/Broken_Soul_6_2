@@ -10,9 +10,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Unity.Cinemachine;
 
-public class NarrativeManager : MonoBehaviour, ISaveable
+public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 {
-    public static NarrativeManager Instance { get; private set; }
+    protected override bool ShouldBeDestroyOnLoad() => true;
+
 
     [Header("Ink")]
     [SerializeField] private TextAsset _inkJSON;
@@ -48,11 +49,9 @@ public class NarrativeManager : MonoBehaviour, ISaveable
     private bool _isChoosing = false;
     private bool _isStoryLoading = true;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null && Instance != this) Destroy(gameObject);
-        else Instance = this;
-
+        base.Awake();
         if (_bossObject != null) _bossObject.SetActive(false);
         if (_dialogPanel != null) _dialogPanel.SetActive(false);
         if (_flashImage != null) _flashImage.gameObject.SetActive(false);

@@ -1,10 +1,12 @@
-using UnityEngine;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using UnityEngine;
 
-public class SaveManager : MonoBehaviour
+public class SaveManager : SingletonGeneric<SaveManager>
 {
+    protected override bool ShouldBeDestroyOnLoad() => false;
+
     [Header("File Configuration")]
     [SerializeField] private string _fileName = "savegame.json";
 
@@ -12,16 +14,10 @@ public class SaveManager : MonoBehaviour
     private List<ISaveable> _saveableObjects;
     private string _filePath;
 
-    public static SaveManager Instance { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+        base.Awake();
         _filePath = Path.Combine(UnityEngine.Application.persistentDataPath, _fileName);
     }
 
