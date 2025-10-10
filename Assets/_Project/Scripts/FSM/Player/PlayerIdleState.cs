@@ -31,4 +31,6 @@ public class PlayerIdleState: PlayerState
 
         playerAnimator.UpdateAnimationParameters();
     }
+
+
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerJumpState : PlayerState
@@ -6,8 +7,10 @@ public class PlayerJumpState : PlayerState
 
     public override void Enter()
     {
+        stateMachine.IsJumping = true;
         playerMovement.Jump();
         playerAnimator.PlayJumpAnimation();
+        stateMachine.StartCoroutine(ResetJumpingFlag());
     }
 
     public override void Update()
@@ -23,5 +26,11 @@ public class PlayerJumpState : PlayerState
     public override void FixedUpdate()
     {
         playerMovement.ApplyMovement();
+    }
+
+    private IEnumerator ResetJumpingFlag()
+    {
+        yield return new WaitForSeconds(1f);
+        stateMachine.IsJumping = false;
     }
 }

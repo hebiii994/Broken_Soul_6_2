@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - ColloquioArenaStart
+  - ColloquioArenaEnd
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Player
   - Enemies
   - Interactable
-  - 
+  - EnemyProjectiles
   - 
   - 
   - 

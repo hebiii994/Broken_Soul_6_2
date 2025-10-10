@@ -19,14 +19,11 @@ public class BossProjectile : PooledObjects
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent<IDamageable>(out var player))
+        if (other.TryGetComponent<IDamageable>(out var damageable))
         {
-            player.TakeDamage(_damage);
+            damageable.TakeDamage(_damage);
         }
 
-        if (!other.CompareTag("Enemy") && !other.isTrigger)
-        {
-            PoolManager.Instance.ReturnPooledObject(this);
-        }
+        PoolManager.Instance.ReturnPooledObject(this);
     }
 }

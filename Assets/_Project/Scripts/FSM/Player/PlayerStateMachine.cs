@@ -7,7 +7,10 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerAnimator PlayerAnimator { get; private set; }
     public PlayerCombat PlayerCombat { get; private set; }
     public bool IsKnockedBack { get; set; }
+
     private PlayerState _currentState;
+    public bool IsJumping { get; set; }
+    public PlayerState CurrentState => _currentState;
 
     private void Awake()
     {

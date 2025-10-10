@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa2518e6556ecf24d9d592ad8da67ed2, type: 3}
-  m_Name: SO_BossProjectilePool
+  m_Name: SO_BossProjectileFace3
   m_EditorClassIdentifier: Assembly-CSharp::PoolScriptableObject
-  type: 0
-  Prefab: {fileID: 3358552499172257369, guid: 714c8590b9115da49af5c1f55c07ce3c, type: 3}
+  type: 2
+  Prefab: {fileID: 7041840466177084768, guid: 90526371145c9a743a8fcac71667c194, type: 3}
   collectionCheck: 0
-  size: 10
-  maxSize: 20
-  time: 10
+  size: 5
+  maxSize: 10
+  fireRate: 0.5
+  time: 5

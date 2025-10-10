@@ -96,6 +96,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         }
         else
         {
+            _isStoryLoading = false;
             RefreshView();
         }
     }
