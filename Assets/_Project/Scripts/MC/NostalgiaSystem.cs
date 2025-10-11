@@ -13,10 +13,23 @@ public class NostalgiaSystem : MonoBehaviour, ISaveable
     public int CurrentNostalgia => _currentNostalgia;
     public int MaxNostalgia => _maxNostalgia;
 
+    public void Awake()
+    {
+        if (_characterStats != null)
+        {
+            _maxNostalgia = _characterStats.maxNostalgia;
+            _currentNostalgia = _maxNostalgia;
+        }
+    }
+
     public void LoadData(GameData data)
     {
-        this._maxNostalgia = data.playerMaxNostalgia;
-        this._currentNostalgia = this._maxNostalgia;
+        if (data.playerMaxNostalgia > 0)
+        {
+            this._maxNostalgia = data.playerMaxNostalgia;
+            this._currentNostalgia = this._maxNostalgia;
+        }
+        OnNostalgiaChanged?.Invoke(_currentNostalgia, _maxNostalgia);
     }
 
     public void SaveData(ref GameData data)
@@ -47,6 +60,7 @@ public class NostalgiaSystem : MonoBehaviour, ISaveable
     {
         if (amount <= 0) return;
         _maxNostalgia += amount;
+        _currentNostalgia = _maxNostalgia;
         OnNostalgiaChanged?.Invoke(_currentNostalgia, _maxNostalgia);
     }
 }

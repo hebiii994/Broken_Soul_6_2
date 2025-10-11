@@ -1,21 +1,25 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerJumpState : PlayerState
+public class PlayerJumpState : PlayerState, IPlayerAirborneState
 {
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        stateMachine.IsJumping = true;
         playerMovement.Jump();
         playerAnimator.PlayJumpAnimation();
-        stateMachine.StartCoroutine(ResetJumpingFlag());
     }
 
     public override void Update()
     {
         playerAnimator.UpdateAnimationParameters();
+
+        if (playerMovement.Rigidbody.linearVelocity.y < 0)
+        {
+            stateMachine.ChangeState(new PlayerFallState(stateMachine));
+            return;
+        }
 
         if (playerMovement.IsGrounded)
         {
@@ -28,9 +32,4 @@ public class PlayerJumpState : PlayerState
         playerMovement.ApplyMovement();
     }
 
-    private IEnumerator ResetJumpingFlag()
-    {
-        yield return new WaitForSeconds(1f);
-        stateMachine.IsJumping = false;
-    }
 }

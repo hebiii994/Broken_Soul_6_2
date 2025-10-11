@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
     public bool IsGrounded { get; private set; }
+    public Rigidbody2D Rigidbody => _rb;
 
     private Rigidbody2D _rb;
     private PlayerInputController _inputController;

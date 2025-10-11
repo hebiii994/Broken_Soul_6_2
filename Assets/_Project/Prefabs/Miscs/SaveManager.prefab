@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5a2d18effdd624891bcc13d360f728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
-  _fileName: savegame.json
+  _fileName: dat.json

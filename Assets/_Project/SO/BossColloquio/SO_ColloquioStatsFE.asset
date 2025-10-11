@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692554fb7fb526144857e3ea913824de, type: 3}
   m_Name: SO_ColloquioStatsFE
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  maxHealth: 50
+  maxHealth: 5
   maxNostalgia: 0
   drainAmount: 0
   drainTickRate: 0

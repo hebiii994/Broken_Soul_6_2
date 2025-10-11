@@ -10,6 +10,12 @@ public class PlayerIdleState: PlayerState
     }
     public override void Update()
     {
+        if (!playerMovement.IsGrounded)
+        {
+            stateMachine.ChangeState(new PlayerFallState(stateMachine));
+            return;
+        }
+
         if (inputController.AttackInput)
         {
             stateMachine.ChangeState(new PlayerAttackState(stateMachine));

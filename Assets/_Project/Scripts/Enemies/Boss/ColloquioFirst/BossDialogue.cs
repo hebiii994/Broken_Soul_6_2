@@ -9,6 +9,10 @@ public class BossDialogue : MonoBehaviour
     [SerializeField] private TextMeshPro _dialogueText;
     [SerializeField] private float _tauntDuration = 4f;
     [SerializeField] private float _analysisDuration = 20f;
+
+    [SerializeField] private string _defeatMonologue = "Patetico. Le faremo sapere, se sarai degno.";
+    [SerializeField] private float _defeatMonologueDuration = 5f;
+
     [SerializeField] private GameObject _dialogueBubble;
     private string _lastTaunt = "";
 
@@ -45,6 +49,19 @@ public class BossDialogue : MonoBehaviour
         _dialogueText.text = taunt;
         _dialogueBubble.SetActive(true);
         yield return new WaitForSeconds(_tauntDuration);
+        _dialogueBubble.SetActive(false);
+    }
+
+    public Coroutine ShowDefeatMonologue()
+    {
+        return StartCoroutine(DefeatRoutine());
+    }
+
+    private IEnumerator DefeatRoutine()
+    {
+        _dialogueText.text = _defeatMonologue;
+        _dialogueBubble.SetActive(true);
+        yield return new WaitForSeconds(_defeatMonologueDuration);
         _dialogueBubble.SetActive(false);
     }
 

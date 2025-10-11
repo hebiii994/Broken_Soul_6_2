@@ -48,14 +48,19 @@ MonoBehaviour:
   _dialogPanel: {fileID: 0}
   _voceOniricaText: {fileID: 0}
   _pensieroPrecarioText: {fileID: 0}
-  _pensieroDisplayTime: 4
+  _pensieroDisplayTime: 5
   _player: {fileID: 0}
   _playerStartPosition: {fileID: 0}
+  _bossArenaStartPosition: {fileID: 0}
+  _bossObject: {fileID: 0}
   _doorPrefab: {fileID: 8306214092516516666, guid: 672ac310d9542954e89fa5b75d90ddc0, type: 3}
   _doorSpawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _playerCamera: {fileID: 0}
+  _bossShortcutLabel: Torna al colloquio
+  _bossShortcutDoorSpawnPoint: {fileID: 0}
   _flashImage: {fileID: 0}
   _flashDuration: 1
   _textFadeDuration: 1

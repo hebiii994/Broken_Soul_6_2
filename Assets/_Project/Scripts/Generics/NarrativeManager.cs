@@ -19,6 +19,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
     [SerializeField] private TextAsset _inkJSON;
     private Story _story;
     private bool _introCompleted = false;
+    public bool IntroCompleted => _introCompleted;
 
     [Header("UI")]
     [SerializeField] private GameObject _dialogPanel;
@@ -43,6 +44,9 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
     [SerializeField] private Image _flashImage;
     [SerializeField] private float _flashDuration = 1f;
     [SerializeField] private float _textFadeDuration = 0.5f;
+
+    [Header("Flow")] 
+    [SerializeField] private CheckpointSO _playerSpawnOnBoss;
 
     private List<GameObject> _currentDoors = new List<GameObject>();
     private int _choicesIgnored = 0;
@@ -322,12 +326,13 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
             yield return _flashImage.DOFade(1, _flashDuration / 2).WaitForCompletion();
         }
 
-        SaveManager.Instance.SetCurrentCheckpoint("BossArenaStartPosition");
+        SaveManager.Instance.SetCurrentCheckpoint(_playerSpawnOnBoss);
         SaveManager.Instance.MarkIntroAsCompleted();
         SaveManager.Instance.SaveGame();
 
         Checkpoint targetCheckpoint = FindObjectsByType<Checkpoint>(FindObjectsSortMode.None)
-                                      .FirstOrDefault(c => c.checkpointId == "BossArenaStartPosition");
+                                  .FirstOrDefault(c => c.checkpointData == _playerSpawnOnBoss);
+
         if (_player != null && targetCheckpoint != null)
         {
             _player.transform.position = targetCheckpoint.transform.position;

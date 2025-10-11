@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8657111852493792428}
   - component: {fileID: 5642968859579097870}
   - component: {fileID: 7555534626005925125}
+  - component: {fileID: 3539056890780589628}
+  - component: {fileID: 7267687594960791892}
   - component: {fileID: 3427874043667890792}
   - component: {fileID: 5677251030689541746}
   m_Layer: 0
@@ -113,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   _characterStats: {fileID: 11400000, guid: 9b7c94eb2a9dc1546a0260e0bf893cbb, type: 2}
+  _shouldBeSaved: 0
 --- !u!114 &4366202044974982541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,9 +144,11 @@ MonoBehaviour:
   _attackCooldown: 3
   _arenaStart: {fileID: 0}
   _arenaEnd: {fileID: 0}
+  _playerCamera: {fileID: 0}
   _moveDuration: 1
   _waitDuration: 1
-  _dodgeDistance: 2
+  _dodgeDistance: 10
+  _dodgeTriggerRange: 5
   _dodgeCooldown: 5
   _projectilePoolSO:
   - {fileID: 11400000, guid: 3f5bb9ba125b874468ed752214f6733d, type: 2}
@@ -169,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossDialogue
   _dialogueText: {fileID: 152508829906208295}
   _tauntDuration: 5
-  _analysisDuration: 10
+  _analysisDuration: 1
   _dialogueBubble: {fileID: 1575585126937268866}
 --- !u!114 &7555534626005925125
 MonoBehaviour:
@@ -183,6 +188,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ac7b1e8c53d704db79e51ca63b03d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossColloquioDeathHandler
+--- !u!114 &3539056890780589628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813477287310438686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb3468ec10df374fbecade08f1e9e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContactDamager
+  _characterStats: {fileID: 11400000, guid: 9b7c94eb2a9dc1546a0260e0bf893cbb, type: 2}
+  _damageCooldown: 1.5
+--- !u!114 &7267687594960791892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813477287310438686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02cdeb18ee5cb6b4382bd8f4db34e4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackHandler
+  _stats: {fileID: 11400000, guid: 9b7c94eb2a9dc1546a0260e0bf893cbb, type: 2}
+  _knockbackDuration: 0.2
 --- !u!50 &3427874043667890792
 Rigidbody2D:
   serializedVersion: 5
@@ -267,9 +300,9 @@ GameObject:
   - component: {fileID: 5523100239701367414}
   - component: {fileID: 8821019813276041509}
   - component: {fileID: 4007106343428721024}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DodgePoint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,7 +356,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.013568401, y: -0.5223875}
+  m_Offset: {x: -0.013568401, y: -0.8988323}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -333,7 +366,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.6635027, y: 2.804613}
+  m_Size: {x: 7.0457773, y: 3.5575027}
   m_EdgeRadius: 0
 --- !u!114 &4007106343428721024
 MonoBehaviour:

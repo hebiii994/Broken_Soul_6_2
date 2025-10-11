@@ -6,6 +6,12 @@ public class PlayerMoveState : PlayerState
 
     public override void Update()
     {
+        if (!playerMovement.IsGrounded)
+        {
+            stateMachine.ChangeState(new PlayerFallState(stateMachine));
+            return;
+        }
+
         if (inputController.SlideInput)
         {
             stateMachine.ChangeState(new PlayerSlideState(stateMachine));

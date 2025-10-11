@@ -743,7 +743,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa73127f3dd2174c8527b7acd0188ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  _spriteRenderer: {fileID: 8769606273315831471}
+  _damageFlashColor: {r: 0.96981126, g: 0.96981126, b: 0.96981126, a: 1}
+  _damageFlashDuration: 0.1
   _characterStats: {fileID: 11400000, guid: 61e1a48509368134ab31eee72c2d78cc, type: 2}
+  _shouldBeSaved: 1
 --- !u!114 &5675376983485228018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +841,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4

@@ -10,6 +10,7 @@ public class SaveManager : SingletonGeneric<SaveManager>
     [Header("File Configuration")]
     [SerializeField] private string _fileName = "savegame.json";
 
+
     private GameData _gameData;
     private List<ISaveable> _saveableObjects;
     private string _filePath;
@@ -30,6 +31,7 @@ public class SaveManager : SingletonGeneric<SaveManager>
 
     public void LoadGame()
     {
+
         if (File.Exists(_filePath))
         {
             try
@@ -48,8 +50,14 @@ public class SaveManager : SingletonGeneric<SaveManager>
             NewGame();
         }
 
-        if (_gameData.hasCompletedIntro && !_gameData.hasDefeatedFirstBoss)
+        if (_gameData.hasDefeatedFirstBoss)
         {
+
+            _gameData.lastCheckpointId = "GameRealStartPoint";
+        }
+        else if (_gameData.hasCompletedIntro)
+        {
+
             _gameData.lastCheckpointId = "CorridorStartPosition";
         }
 
@@ -68,6 +76,7 @@ public class SaveManager : SingletonGeneric<SaveManager>
 
     public void SaveGame()
     {
+        _saveableObjects = FindAllSaveableObjects();
         UpdateCurrentCheckpoint();
 
         foreach (ISaveable saveable in _saveableObjects)
@@ -79,11 +88,11 @@ public class SaveManager : SingletonGeneric<SaveManager>
         UnityEngine.Debug.Log("Gioco salvato in: " + _filePath);
     }
 
-    public void SetCurrentCheckpoint(string checkpointId)
+    public void SetCurrentCheckpoint(CheckpointSO checkpointData)
     {
-        if (_gameData != null)
+        if (_gameData != null && checkpointData != null)
         {
-            _gameData.lastCheckpointId = checkpointId;
+            _gameData.lastCheckpointId = checkpointData.checkpointId;
         }
     }
 
@@ -103,8 +112,9 @@ public class SaveManager : SingletonGeneric<SaveManager>
     }
     private void MovePlayerToCheckpoint(string checkpointId)
     {
+        if (string.IsNullOrEmpty(checkpointId)) return;
         Checkpoint[] allCheckpoints = FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
-        Checkpoint targetCheckpoint = allCheckpoints.FirstOrDefault(c => c.checkpointId == checkpointId);
+        Checkpoint targetCheckpoint = allCheckpoints.FirstOrDefault(c => c.checkpointData != null && c.checkpointData.checkpointId == checkpointId);
 
         if (targetCheckpoint != null)
         {

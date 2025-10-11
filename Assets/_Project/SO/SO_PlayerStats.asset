@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692554fb7fb526144857e3ea913824de, type: 3}
   m_Name: SO_PlayerStats
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  maxHealth: 5
+  maxHealth: 4
   maxNostalgia: 100
   drainAmount: 1
   drainTickRate: 5
