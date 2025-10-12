@@ -61,6 +61,7 @@ public class SaveManager : SingletonGeneric<SaveManager>
             _gameData.lastCheckpointId = "CorridorStartPosition";
         }
 
+
         foreach (ISaveable saveable in _saveableObjects)
         {
             saveable.LoadData(_gameData);

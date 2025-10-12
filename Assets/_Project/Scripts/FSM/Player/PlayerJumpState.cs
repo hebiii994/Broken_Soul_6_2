@@ -15,6 +15,12 @@ public class PlayerJumpState : PlayerState, IPlayerAirborneState
     {
         playerAnimator.UpdateAnimationParameters();
 
+        if (inputController.AttackInput)
+        {
+            stateMachine.ChangeState(new PlayerAttackState(stateMachine));
+            return;
+        }
+
         if (playerMovement.Rigidbody.linearVelocity.y < 0)
         {
             stateMachine.ChangeState(new PlayerFallState(stateMachine));

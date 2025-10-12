@@ -11,6 +11,12 @@ public class PlayerFallState : PlayerState, IPlayerAirborneState
 
     public override void Update()
     {
+        if (inputController.AttackInput)
+        {
+            stateMachine.ChangeState(new PlayerAttackState(stateMachine));
+            return;
+        }
+
         playerAnimator.UpdateAnimationParameters();
 
         if (playerMovement.IsGrounded)

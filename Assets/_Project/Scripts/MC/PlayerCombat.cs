@@ -54,6 +54,7 @@ public class PlayerCombat : MonoBehaviour
         Vector2 moveInput = _inputController.MoveInput;
         GameObject activeHitbox = null;
         Vector2 animationDirection = Vector2.zero;
+        
 
         if (moveInput.y > 0.1f)
         {
@@ -67,17 +68,31 @@ public class PlayerCombat : MonoBehaviour
         }
         else
         {
-            Vector2 lastMoveDirection = _playerAnimator.GetLastMoveDirection();
-            if (lastMoveDirection.x >= 0)
+            if (moveInput.x > 0.1f)
             {
                 activeHitbox = _rightHitbox;
                 animationDirection = Vector2.right;
             }
-            else
+            else if (moveInput.x < -0.1f)
             {
                 activeHitbox = _leftHitbox;
                 animationDirection = Vector2.left;
             }
+            else
+            {
+                Vector2 lastMoveDirection = _playerAnimator.GetLastMoveDirection();
+                if (lastMoveDirection.x >= 0)
+                {
+                    activeHitbox = _rightHitbox;
+                    animationDirection = Vector2.right;
+                }
+                else
+                {
+                    activeHitbox = _leftHitbox;
+                    animationDirection = Vector2.left;
+                }
+            }
+            
         }
 
         if (activeHitbox != null)

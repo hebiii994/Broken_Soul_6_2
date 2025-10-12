@@ -571,7 +571,6 @@ GameObject:
   - component: {fileID: 5675376983485228018}
   - component: {fileID: 5437857942018916499}
   - component: {fileID: 2014874096109783249}
-  - component: {fileID: 7497518532462498985}
   - component: {fileID: 1771052943920615732}
   - component: {fileID: 4283977727392858540}
   - component: {fileID: 1155291410723646054}
@@ -744,7 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   _spriteRenderer: {fileID: 8769606273315831471}
-  _damageFlashColor: {r: 0.96981126, g: 0.96981126, b: 0.96981126, a: 1}
+  _damageFlashColor: {r: 0.90943396, g: 0.32773942, b: 0.32773942, a: 1}
   _damageFlashDuration: 0.1
   _characterStats: {fileID: 11400000, guid: 61e1a48509368134ab31eee72c2d78cc, type: 2}
   _shouldBeSaved: 1
@@ -792,20 +791,6 @@ MonoBehaviour:
   _upHitbox: {fileID: 5721861566436289953}
   _downHitbox: {fileID: 3579928186925083097}
   _attackDuration: 0.5
---- !u!114 &7497518532462498985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681655890677980678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02cdeb18ee5cb6b4382bd8f4db34e4d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KnockbackHandler
-  _stats: {fileID: 11400000, guid: 61e1a48509368134ab31eee72c2d78cc, type: 2}
-  _knockbackDuration: 0.2
 --- !u!114 &1771052943920615732
 MonoBehaviour:
   m_ObjectHideFlags: 0

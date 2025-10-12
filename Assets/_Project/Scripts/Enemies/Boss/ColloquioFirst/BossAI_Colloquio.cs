@@ -50,6 +50,8 @@ public class BossAI_Colloquio : MonoBehaviour
     private BossDialogue _bossDialogue;
     private bool _aiStarted = false;
     private Coroutine _attackCoroutine;
+    private Coroutine _stateMachineRoutine;
+    private Coroutine _moveRoutine;
 
 
     // --- NUOVE VARIABILI DI PROVA PER I GIZMOS ---
@@ -98,8 +100,8 @@ public class BossAI_Colloquio : MonoBehaviour
         _aiStarted = true;
 
         Debug.Log("BOSS AI: Ricevuto segnale 'Game Ready'. Avvio IA.");
-        StartCoroutine(StateMachineRoutine());
-        StartCoroutine(MoveRoutine());
+        _stateMachineRoutine = StartCoroutine(StateMachineRoutine());
+        _moveRoutine = StartCoroutine(MoveRoutine());
     }
 
     private IEnumerator StateMachineRoutine()
@@ -224,11 +226,7 @@ public class BossAI_Colloquio : MonoBehaviour
 
             while (Time.time < startTime + _moveDuration)
             {
-                if (_isDodging)
-                {
-                    yield break;
-                }
-                    float normalizedTime = (Time.time - startTime) / _moveDuration;
+                float normalizedTime = (Time.time - startTime) / _moveDuration;
                 float easedT = EaseInOutCubic(normalizedTime);
                 transform.position = Vector2.Lerp(startingPosition, targetPosition, easedT);
                 yield return null;
@@ -306,14 +304,16 @@ public class BossAI_Colloquio : MonoBehaviour
         if (_fightIsOver) return;
         CameraUtility.Instance.StartCoroutine(CameraUtility.Instance.ZoomCameraRoutine(4.5f, 1.5f));
         _fightIsOver = true;
-        StopAllCoroutines();
+        if (_attackCoroutine != null) StopCoroutine(_attackCoroutine);
+        if (_moveRoutine != null) StopCoroutine(_moveRoutine);
+        if (_stateMachineRoutine != null) StopCoroutine(_stateMachineRoutine);
         StartCoroutine(DefeatSequenceRoutine());
     }
     private IEnumerator DefeatSequenceRoutine()
     {
         Debug.Log("BOSS AI: Avvio sequenza di sconfitta del giocatore.");
         _canMove = false;
-        yield return _bossDialogue.ShowDefeatMonologue();
+        yield return _bossDialogue.ShowDefeatMonologue();  
         yield return StartCoroutine(TeleportPlayerAndStartGame());
     }
 
@@ -334,8 +334,7 @@ public class BossAI_Colloquio : MonoBehaviour
             SaveManager.Instance.SaveGame();
         }
 
-
-         yield return ScreenFader.Instance.FadeIn(1.5f); 
+        yield return ScreenFader.Instance.FadeIn(1.5f);
     }
 
     private void ChangeState(BossState newState)

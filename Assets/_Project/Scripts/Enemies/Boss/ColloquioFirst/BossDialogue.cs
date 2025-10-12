@@ -6,11 +6,20 @@ using System.Text;
 
 public class BossDialogue : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro _dialogueText;
+    [Header("UI Positioning")]
+    [SerializeField] private Camera _mainCamera;
+    [SerializeField] private RectTransform _dialogueBubbleRectTransform;
+    [SerializeField] private Vector3 _dialogueOffset = new Vector3(0, -4f, 0);
+    [SerializeField] private RectTransform _visibleBubbleRect;
+
+    [Header("Dialogue Settings")]
+    [SerializeField] private TextMeshProUGUI _dialogueText;
     [SerializeField] private float _tauntDuration = 4f;
     [SerializeField] private float _analysisDuration = 20f;
+    [SerializeField] private float _typingSpeed = 0.05f;
+    private bool _isWriting = false;
 
-    [SerializeField] private string _defeatMonologue = "Patetico. Le faremo sapere, se sarai degno.";
+    [SerializeField] private string _defeatMonologue = "Le faremo sapere...";
     [SerializeField] private float _defeatMonologueDuration = 5f;
 
     [SerializeField] private GameObject _dialogueBubble;
@@ -18,9 +27,23 @@ public class BossDialogue : MonoBehaviour
 
     private void Start()
     {
-        if (_dialogueBubble != null)
+
+    }
+
+    private void LateUpdate()
+    {
+        if (_dialogueBubble != null && _dialogueBubble.activeInHierarchy)
         {
-            _dialogueBubble.SetActive(false);
+            Vector3 screenPos = _mainCamera.WorldToScreenPoint(transform.position + _dialogueOffset);
+
+
+            float bubbleWidth = _visibleBubbleRect.rect.width;
+            float bubbleHeight = _visibleBubbleRect.rect.height;
+
+            screenPos.x = Mathf.Clamp(screenPos.x, 0, Screen.width - bubbleWidth);
+
+            screenPos.y = Mathf.Clamp(screenPos.y, 0, Screen.height - bubbleHeight);
+            _dialogueBubbleRectTransform.position = screenPos;
         }
     }
 
@@ -36,18 +59,31 @@ public class BossDialogue : MonoBehaviour
 
     private IEnumerator AnalysisRoutine()
     {
+        if (_isWriting) yield break;
+        _isWriting = true;
         string analysis = GetIntroAnalysis();
-        _dialogueText.text = analysis;
         _dialogueBubble.SetActive(true);
+        _dialogueText.text = "";
+        foreach (char letter in analysis.ToCharArray())
+        {
+            _dialogueText.text += letter;
+            yield return new WaitForSeconds(_typingSpeed);
+        }
         yield return new WaitForSeconds(_analysisDuration);
         _dialogueBubble.SetActive(false);
+        _isWriting = false;
     }
 
     private IEnumerator TauntRoutine()
     {
         string taunt = GetTauntBasedOnPlayerChoices();
-        _dialogueText.text = taunt;
         _dialogueBubble.SetActive(true);
+        _dialogueText.text = "";
+        foreach (char letter in taunt.ToCharArray())
+        {
+            _dialogueText.text += letter; 
+            yield return new WaitForSeconds(_typingSpeed);
+        }
         yield return new WaitForSeconds(_tauntDuration);
         _dialogueBubble.SetActive(false);
     }
@@ -59,10 +95,19 @@ public class BossDialogue : MonoBehaviour
 
     private IEnumerator DefeatRoutine()
     {
+        if (_isWriting) yield break;
+        _isWriting = true;
         _dialogueText.text = _defeatMonologue;
         _dialogueBubble.SetActive(true);
+        _dialogueText.text = "";
+        foreach (char letter in _defeatMonologue.ToCharArray())
+        {
+            _dialogueText.text += letter;
+            yield return new WaitForSeconds(_typingSpeed);
+        }
         yield return new WaitForSeconds(_defeatMonologueDuration);
         _dialogueBubble.SetActive(false);
+        _isWriting = false;
     }
 
     private string GetIntroAnalysis()

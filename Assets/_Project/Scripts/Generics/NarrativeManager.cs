@@ -43,10 +43,17 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
     [Header("Effects")]
     [SerializeField] private Image _flashImage;
     [SerializeField] private float _flashDuration = 1f;
-    [SerializeField] private float _textFadeDuration = 0.5f;
 
     [Header("Flow")] 
     [SerializeField] private CheckpointSO _playerSpawnOnBoss;
+
+    [Header("Typewriter Effect")]
+    [SerializeField] private float _typingSpeed = 0.04f;
+    //[SerializeField] private float _fastTypingSpeed = 0.01f;
+
+    private Coroutine _writingCoroutine;
+    //private string _fullTextForSkip;
+    //private TextMeshProUGUI _activeTextComponentForSkip;
 
     private List<GameObject> _currentDoors = new List<GameObject>();
     private int _choicesIgnored = 0;
@@ -69,13 +76,18 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
     private void Update()
     {
 
-        //if (Keyboard.current.tKey.wasPressedThisFrame)
+        //if (_writingCoroutine != null && Keyboard.current.eKey.wasPressedThisFrame)
         //{
-        //    if (!_isChoosing)
+        //    StopCoroutine(_writingCoroutine);
+
+        //    if (_activeTextComponentForSkip != null)
         //    {
-        //        Debug.LogWarning("DEBUG: Saltando l'introduzione e avviando la transizione alla boss fight...");
-        //        StartCoroutine(BossFightTransitionRoutine());
+        //        _activeTextComponentForSkip.text = _fullTextForSkip;
         //    }
+
+        //    _writingCoroutine = null;
+        //    _fullTextForSkip = null;
+        //    _activeTextComponentForSkip = null;
         //}
     }
 
@@ -123,13 +135,16 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
             return;
         }
 
-        if (HandleSpecialTags(_story.currentTags)) return;
-
         while (_story.canContinue)
         {
             string currentLine = _story.Continue();
             Debug.Log("POST-CONTINUE || canContinue=" + _story.canContinue + " || tag correnti: " + string.Join(",", _story.currentTags));
             DisplayLine(currentLine, _story.currentTags);
+        }
+
+        if (HandleSpecialTags(_story.currentTags))
+        {
+            return;
         }
 
         DisplayChoices();
@@ -147,6 +162,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 
         StartCoroutine(ChoiceTransitionRoutine(choiceIndex));
     }
+
 
     private IEnumerator ChoiceTransitionRoutine(int choiceIndex)
     {
@@ -172,22 +188,10 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         if (_story.canContinue)
         {
             pensieroText = _story.Continue();
-            Debug.Log("POST-CONTINUE || canContinue=" + _story.canContinue + " || tag correnti: " + string.Join(",", _story.currentTags));
             if (_story.currentTags.Contains("pensiero"))
             {
                 hasPensiero = true;
             }
-        }
-
-        if (hasPensiero)
-        {
-            if (_voceOniricaText != null) _voceOniricaText.gameObject.SetActive(false);
-            if (_pensieroPrecarioText != null)
-            {
-                _pensieroPrecarioText.text = pensieroText;
-                _pensieroPrecarioText.gameObject.SetActive(true);
-            }
-            if (_dialogPanel != null) _dialogPanel.SetActive(true);
         }
 
         if (_flashImage != null)
@@ -198,15 +202,22 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 
         if (hasPensiero)
         {
-            yield return new WaitForSeconds(_pensieroDisplayTime);
+            if (_voceOniricaText != null) _voceOniricaText.gameObject.SetActive(false);
+            if (_pensieroPrecarioText != null)
+            {
+                _writingCoroutine = StartCoroutine(WriteTextCoroutine(_pensieroPrecarioText, pensieroText));
+                yield return _writingCoroutine;
+
+                yield return new WaitForSeconds(_pensieroDisplayTime);
+            }
         }
+
         if (_dialogPanel != null) _dialogPanel.SetActive(false);
 
         if (HandleSpecialTags(_story.currentTags))
         {
-            Debug.Log("POST-CONTINUE || canContinue=" + _story.canContinue + " || tag correnti: " + string.Join(",", _story.currentTags));
             _isChoosing = false;
-            yield break;    
+            yield break;
         }
 
         if (inputController != null) inputController.enabled = true;
@@ -217,14 +228,6 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         }
         _isChoosing = false;
         RefreshView();
-        if (!_story.canContinue)
-        {
-            if (HandleSpecialTags(_story.currentTags))
-            {
-                _isChoosing = false;
-                yield break;
-            }
-        }
     }
 
     public void OnPlayerIgnoredChoice()
@@ -273,7 +276,17 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         {
             string specialLine = _story.Continue();
             Debug.Log("POST-CONTINUE || canContinue=" + _story.canContinue + " || tag correnti: " + string.Join(",", _story.currentTags));
-            DisplayLine(specialLine, _story.currentTags);
+            if (_story.currentTags.Contains("voce") && _voceOniricaText != null)
+            {
+
+                _writingCoroutine = StartCoroutine(WriteTextCoroutine(_voceOniricaText, specialLine));
+                yield return _writingCoroutine;
+            }
+            else
+            {
+                Debug.LogWarning("Il dialogo speciale non ha un tag 'voce' o il campo di testo non è assegnato.");
+                _voceOniricaText.text = specialLine;
+            }
         }
 
         if (_flashImage != null)
@@ -398,10 +411,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         {
             if (_voceOniricaText != null)
             {
-                _voceOniricaText.text = line;
-                _voceOniricaText.gameObject.SetActive(true);
-                _voceOniricaText.alpha = 0;
-                _voceOniricaText.DOFade(1, _textFadeDuration);
+                _writingCoroutine = StartCoroutine(WriteTextCoroutine(_voceOniricaText, line));
             }
             if (_pensieroPrecarioText != null) _pensieroPrecarioText.gameObject.SetActive(false);
             if (_dialogPanel != null) _dialogPanel.SetActive(true);
@@ -450,18 +460,42 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         _player.GetComponent<PlayerMovement>().StopMovement();
 
         _voceOniricaText.gameObject.SetActive(false);
-        _pensieroPrecarioText.text = "...la scelta di non scegliere.";
+        _writingCoroutine = StartCoroutine(WriteTextCoroutine(_pensieroPrecarioText, "...la scelta di non scegliere."));
         _pensieroPrecarioText.gameObject.SetActive(true);
         _dialogPanel.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        yield return _writingCoroutine;
 
-        _pensieroPrecarioText.text = "...di non essere.";
-        yield return new WaitForSeconds(4f);
+
+        _writingCoroutine = StartCoroutine(WriteTextCoroutine(_pensieroPrecarioText, "...di non essere."));
+        yield return _writingCoroutine;
 
         Debug.Log("GAME OVER - Ritorno al menu principale...");
         // Esempio: SceneManager.LoadScene("MainMenu");
     }
+    private IEnumerator WriteTextCoroutine(TextMeshProUGUI textComponent, string textToWrite)
+    {
+        //_fullTextForSkip = textToWrite;
+        //_activeTextComponentForSkip = textComponent;
 
+        textComponent.text = "";
+        textComponent.gameObject.SetActive(true);
+        _dialogPanel.SetActive(true);
+
+        foreach (char letter in textToWrite.ToCharArray())
+        {
+            textComponent.text += letter;
+            if (letter != ' ' && letter != '\n')
+            {
+
+                // AudioManager.Instance.PlayTypingSound(); 
+            }
+            yield return new WaitForSeconds(_typingSpeed);
+        }
+
+        _writingCoroutine = null;
+        //_fullTextForSkip = null;
+        //_activeTextComponentForSkip = null;
+    }
     public object GetInkVariable(string variableName)
     {
         if (_story != null)
