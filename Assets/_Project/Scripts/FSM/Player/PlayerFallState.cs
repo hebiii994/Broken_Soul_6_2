@@ -19,6 +19,14 @@ public class PlayerFallState : PlayerState, IPlayerAirborneState
 
         playerAnimator.UpdateAnimationParameters();
 
+        if (playerMovement.Rigidbody.linearVelocity.y < 0 && playerMovement.IsNearLedge &&
+            playerMovement.IsTouchingWall)
+        {
+            Debug.Log("[FallState] Ledge rilevato! Transizione a LedgeGrabState");
+            stateMachine.ChangeState(new PlayerLedgeGrabState(stateMachine));
+            return; 
+        }
+
         if (playerMovement.IsGrounded)
         {
             stateMachine.ChangeState(new PlayerIdleState(stateMachine));
@@ -27,6 +35,8 @@ public class PlayerFallState : PlayerState, IPlayerAirborneState
 
     public override void FixedUpdate()
     {
-        playerMovement.ApplyMovement();
+        float currentSpeed = inputController.IsRunning ? playerMovement.RunSpeed : playerMovement.MoveSpeed;
+        float moveVelocity = inputController.MoveInput.x * currentSpeed;
+        playerMovement.SetHorizontalVelocity(moveVelocity);
     }
 }

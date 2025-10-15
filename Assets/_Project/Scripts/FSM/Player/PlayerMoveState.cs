@@ -40,6 +40,8 @@ public class PlayerMoveState : PlayerState
 
     public override void FixedUpdate()
     {
-        playerMovement.ApplyMovement();
+        float currentSpeed = inputController.IsRunning ? playerMovement.RunSpeed : playerMovement.MoveSpeed;
+        float moveVelocity = inputController.MoveInput.x * currentSpeed;
+        playerMovement.SetHorizontalVelocity(moveVelocity);
     }
 }

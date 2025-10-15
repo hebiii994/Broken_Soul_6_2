@@ -6,8 +6,11 @@ public class PlayerIdleState: PlayerState
 
     public override void Enter()
     {
+        Debug.Log($"[IdleState Enter] Entrato in Idle. Velocità attuale: {playerMovement.Rigidbody.linearVelocity}. Chiamo StopMovement.");
         playerMovement.StopMovement();
+        Debug.Log($"[IdleState Enter] Velocità DOPO StopMovement: {playerMovement.Rigidbody.linearVelocity}");
     }
+    
     public override void Update()
     {
         if (!playerMovement.IsGrounded)

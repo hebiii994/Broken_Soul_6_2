@@ -21,21 +21,26 @@ public class PlayerJumpState : PlayerState, IPlayerAirborneState
             return;
         }
 
-        if (playerMovement.Rigidbody.linearVelocity.y < 0)
+        if (playerMovement.Rigidbody.linearVelocity.y <= 0)
         {
+            if (playerMovement.IsNearLedge && playerMovement.IsTouchingWall)
+            {
+                Debug.Log("[JumpState] Ledge rilevato! Transizione a LedgeGrabState");
+                stateMachine.ChangeState(new PlayerLedgeGrabState(stateMachine));
+                return;
+            }
+
             stateMachine.ChangeState(new PlayerFallState(stateMachine));
             return;
         }
 
-        if (playerMovement.IsGrounded)
-        {
-            stateMachine.ChangeState(new PlayerIdleState(stateMachine));
-        }
     }
 
     public override void FixedUpdate()
     {
-        playerMovement.ApplyMovement();
+        float currentSpeed = inputController.IsRunning ? playerMovement.RunSpeed : playerMovement.MoveSpeed;
+        float moveVelocity = inputController.MoveInput.x * currentSpeed;
+        playerMovement.SetHorizontalVelocity(moveVelocity);
     }
 
 }

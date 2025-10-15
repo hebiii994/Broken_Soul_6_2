@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class SaveManager : SingletonGeneric<SaveManager>
 {
@@ -114,15 +115,26 @@ public class SaveManager : SingletonGeneric<SaveManager>
     private void MovePlayerToCheckpoint(string checkpointId)
     {
         if (string.IsNullOrEmpty(checkpointId)) return;
+
         Checkpoint[] allCheckpoints = FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
         Checkpoint targetCheckpoint = allCheckpoints.FirstOrDefault(c => c.checkpointData != null && c.checkpointData.checkpointId == checkpointId);
 
         if (targetCheckpoint != null)
         {
-            Transform player = FindAnyObjectByType<PlayerStateMachine>().transform;
-            if (player != null)
+            PlayerStateMachine playerStateMachine = FindAnyObjectByType<PlayerStateMachine>();
+            if (playerStateMachine != null)
             {
-                player.position = targetCheckpoint.transform.position;
+                Vector3 oldPosition = playerStateMachine.transform.position;
+                Vector3 newPosition = targetCheckpoint.transform.position;
+
+                playerStateMachine.transform.position = newPosition;
+
+                CinemachineCamera playerCamera = playerStateMachine.PlayerCamera;
+                if (playerCamera != null)
+                {
+                    Vector3 deltaPosition = newPosition - oldPosition;
+                    playerCamera.OnTargetObjectWarped(playerStateMachine.transform, deltaPosition);
+                }
             }
         }
         else

@@ -1,7 +1,10 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class PlayerStateMachine : MonoBehaviour
 {
+    [SerializeField] private CinemachineCamera _playerCamera;
+    public CinemachineCamera PlayerCamera => _playerCamera;
     public PlayerInputController InputController { get; private set; }
     public PlayerMovement PlayerMovement { get; private set; }
     public PlayerAnimator PlayerAnimator { get; private set; }

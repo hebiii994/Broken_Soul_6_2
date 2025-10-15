@@ -131,6 +131,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 
         if (_introCompleted)
         {
+            CleanupIntroObjects();
             DisplayBossShortcutDoor();
             return;
         }
@@ -180,6 +181,8 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         if (_player != null && _playerStartPosition != null)
         {
             _player.transform.position = _playerStartPosition.position;
+            Debug.Log($"[NarrativeManager] TELEPORTO Player a _playerStartPosition: {_player.transform.position}");
+
         }
 
         _story.ChooseChoiceIndex(choiceIndex);
@@ -232,6 +235,10 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 
     public void OnPlayerIgnoredChoice()
     {
+        if (_isChoosing || _story == null || !_story.canContinue)
+        {
+            return;
+        }
         if (_isChoosing) return;
         _choicesIgnored++;
         string knotToJumpTo = "";
@@ -269,6 +276,8 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         if (_player != null && _playerStartPosition != null)
         {
             _player.transform.position = _playerStartPosition.position;
+            Debug.Log($"[NarrativeManager] TELEPORTO Player a _playerStartPosition: {_player.transform.position}");
+
         }
 
         _story.ChoosePathString(knot);
@@ -330,6 +339,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
     {
         _isChoosing = true;
         ClearScene();
+        CleanupIntroObjects();
         PlayerInputController inputController = _player.GetComponent<PlayerInputController>();
         if (inputController != null) inputController.enabled = false;
 
@@ -380,6 +390,22 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         _isChoosing = false;
     }
 
+    private void CleanupIntroObjects()
+    {
+        IgnoreChoiceTrigger[] leftoverTriggers = FindObjectsByType<IgnoreChoiceTrigger>(FindObjectsSortMode.None);
+        foreach (IgnoreChoiceTrigger trigger in leftoverTriggers)
+        {
+            Destroy(trigger.gameObject);
+        }
+
+        SecretEndingTrigger[] secretTriggers = FindObjectsByType<SecretEndingTrigger>(FindObjectsSortMode.None);
+         foreach (SecretEndingTrigger trigger in secretTriggers)
+         {
+             Destroy(trigger.gameObject);
+         }
+
+        Debug.Log("Pulizia degli oggetti dell'introduzione completata.");
+    }
     private void DisplayBossShortcutDoor()
     {
         if (_doorPrefab == null)
