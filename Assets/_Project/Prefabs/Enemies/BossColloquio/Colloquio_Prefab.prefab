@@ -176,10 +176,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58acd2961cf94584c81cab709fc21338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossDialogue
+  _mainCamera: {fileID: 0}
+  _dialogueBubbleRectTransform: {fileID: 0}
+  _dialogueOffset: {x: 0, y: -4, z: 0}
+  _visibleBubbleRect: {fileID: 0}
   _dialogueText: {fileID: 0}
   _tauntDuration: 3.5
   _analysisDuration: 1
-  _typingSpeed: 0.05
+  _typingSpeed: 0.5
   _defeatMonologue: Le faremo sapere...
   _defeatMonologueDuration: 5
   _dialogueBubble: {fileID: 0}

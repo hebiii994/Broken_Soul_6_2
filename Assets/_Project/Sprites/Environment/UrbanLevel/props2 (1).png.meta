@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: b2d9b71da0ef49640a6505df3a7c2e8d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4714588912262446749
+    second: props2 (1)_0
+  - first:
+      213: -9191248764154983013
+    second: props2 (1)_1
+  - first:
+      213: 8512554748997951362
+    second: props2 (1)_2
+  - first:
+      213: 3009676196076519500
+    second: props2 (1)_3
+  - first:
+      213: 4177967718453189902
+    second: props2 (1)_4
+  - first:
+      213: -696920802254722720
+    second: props2 (1)_5
+  - first:
+      213: -2599221267798368122
+    second: props2 (1)_6
+  - first:
+      213: -8875209712343172571
+    second: props2 (1)_7
+  - first:
+      213: 569940316716928416
+    second: props2 (1)_8
+  - first:
+      213: -7371090126110118375
+    second: props2 (1)_9
+  - first:
+      213: -555166731079347929
+    second: props2 (1)_10
+  - first:
+      213: -8787967310088780368
+    second: props2 (1)_11
+  - first:
+      213: -6350006809476175813
+    second: props2 (1)_12
+  - first:
+      213: -4042078028705466341
+    second: props2 (1)_13
+  - first:
+      213: 8140717197538417330
+    second: props2 (1)_14
+  - first:
+      213: -6724060163217373272
+    second: props2 (1)_15
+  - first:
+      213: -6854520028468163954
+    second: props2 (1)_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: props2 (1)_0
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 1652
+        width: 1044
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9ef56103a59d6140800000000000000
+      internalID: 4714588912262446749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_1
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 1202
+        width: 329
+        height: 802
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9d4b4242ff127080800000000000000
+      internalID: -9191248764154983013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_2
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1176
+        width: 238
+        height: 824
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28f5619517ba22670800000000000000
+      internalID: 8512554748997951362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_3
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 1262
+        width: 1044
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c40071ced8484c920800000000000000
+      internalID: 3009676196076519500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_4
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 1073
+        width: 415
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0d937d018f1bf930800000000000000
+      internalID: 4177967718453189902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_5
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 1028
+        width: 420
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 069e609093a0456f0800000000000000
+      internalID: -696920802254722720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_6
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 877
+        width: 709
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 680ec383706bdebd0800000000000000
+      internalID: -2599221267798368122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_7
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 663
+        width: 421
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52a30bc1acbe4d480800000000000000
+      internalID: -8875209712343172571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_8
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 664
+        width: 422
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ad0619c2b5d8e700800000000000000
+      internalID: 569940316716928416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_9
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 597
+        width: 76
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91e21d18590a4b990800000000000000
+      internalID: -7371090126110118375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_10
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 597
+        width: 76
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72196eaacc6ab48f0800000000000000
+      internalID: -555166731079347929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_11
+      rect:
+        serializedVersion: 2
+        x: 1519
+        y: 63
+        width: 483
+        height: 649
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b5c968ca4eda0680800000000000000
+      internalID: -8787967310088780368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_12
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 601
+        width: 381
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b386cd7537e30e7a0800000000000000
+      internalID: -6350006809476175813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_13
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 514
+        width: 379
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b187990e277a7e7c0800000000000000
+      internalID: -4042078028705466341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_14
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 75
+        width: 493
+        height: 355
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bad038e823a9f070800000000000000
+      internalID: 8140717197538417330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_15
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 79
+        width: 276
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a7c21b38e65fa2a0800000000000000
+      internalID: -6724060163217373272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props2 (1)_16
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 79
+        width: 633
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8aca55d95adfd0a0800000000000000
+      internalID: -6854520028468163954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      props2 (1)_0: 4714588912262446749
+      props2 (1)_1: -9191248764154983013
+      props2 (1)_10: -555166731079347929
+      props2 (1)_11: -8787967310088780368
+      props2 (1)_12: -6350006809476175813
+      props2 (1)_13: -4042078028705466341
+      props2 (1)_14: 8140717197538417330
+      props2 (1)_15: -6724060163217373272
+      props2 (1)_16: -6854520028468163954
+      props2 (1)_2: 8512554748997951362
+      props2 (1)_3: 3009676196076519500
+      props2 (1)_4: 4177967718453189902
+      props2 (1)_5: -696920802254722720
+      props2 (1)_6: -2599221267798368122
+      props2 (1)_7: -8875209712343172571
+      props2 (1)_8: 569940316716928416
+      props2 (1)_9: -7371090126110118375
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

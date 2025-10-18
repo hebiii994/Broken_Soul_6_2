@@ -235,7 +235,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 
     public void OnPlayerIgnoredChoice()
     {
-        if (_isChoosing || _story == null || !_story.canContinue)
+        if (_isChoosing || _story == null || _story.currentChoices.Count == 0)
         {
             return;
         }
@@ -287,7 +287,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
             Debug.Log("POST-CONTINUE || canContinue=" + _story.canContinue + " || tag correnti: " + string.Join(",", _story.currentTags));
             if (_story.currentTags.Contains("voce") && _voceOniricaText != null)
             {
-
+                if (_pensieroPrecarioText != null) _pensieroPrecarioText.gameObject.SetActive(false);
                 _writingCoroutine = StartCoroutine(WriteTextCoroutine(_voceOniricaText, specialLine));
                 yield return _writingCoroutine;
             }
