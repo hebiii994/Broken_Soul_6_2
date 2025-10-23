@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec8da9418a6bf493e93ef4c7b7575847, type: 3}
+  m_Name: Mc2 Skeleton
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SkeletonAsset
+  m_SpriteBones:
+  - m_Name: Torso
+    m_Guid: 71a6a0e5a3f17744fbac1365ba3e4314
+    m_Position: {x: 2036.4973, y: 1896.5524, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.7351632, w: 0.6778902}
+    m_Length: 218.75897
+    m_ParentId: -1
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278190335
+  - m_Name: Shoulder
+    m_Guid: 643ea441a57ea7244aa9f8bebbb05932
+    m_Position: {x: 595.1256, y: -0.00022469141, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.16452724, w: 0.98637253}
+    m_Length: 420.04803
+    m_ParentId: 15
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255615
+  - m_Name: Head
+    m_Guid: 1c352ab1138ad6f41b84531869fc7522
+    m_Position: {x: 420.04825, y: 0.00005068339, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.15117717, w: 0.98850673}
+    m_Length: 633.8386
+    m_ParentId: 1
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255360
+  - m_Name: R_arm
+    m_Guid: f8359c40dec69424bbbb2e89a84d9dbd
+    m_Position: {x: 944.9531, y: -111.347694, z: 0}
+    m_Rotation: {x: 0, y: -0, z: -0.8470667, w: 0.5314867}
+    m_Length: 435.76038
+    m_ParentId: 0
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294967040
+  - m_Name: insideRarm
+    m_Guid: 3c2e44095ef9a864aa84555f28b506a1
+    m_Position: {x: 435.76035, y: -0.000003573121, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.04729339, w: 0.99888104}
+    m_Length: 410.26938
+    m_ParentId: 3
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294901760
+  - m_Name: R_hand
+    m_Guid: c7e70336efa4b224a8162650253a4d4f
+    m_Position: {x: 410.26938, y: -0.00010507836, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.0085031735, w: 0.9999639}
+    m_Length: 200.14749
+    m_ParentId: 4
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294902015
+  - m_Name: L_arm
+    m_Guid: daa70efaa6154a34082a4a247ed63387
+    m_Position: {x: 1038.5321, y: -95.86561, z: 0}
+    m_Rotation: {x: 0, y: -0, z: -0.86095464, w: 0.5086818}
+    m_Length: 458.20587
+    m_ParentId: 0
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278223103
+  - m_Name: insideLarm
+    m_Guid: bc12bbc6a8e04ab43914f9f5526708c4
+    m_Position: {x: 458.2058, y: -0.00007580221, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.06588904, w: 0.997827}
+    m_Length: 428.2053
+    m_ParentId: 6
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255488
+  - m_Name: Lhand
+    m_Guid: 4c0be2559169e3e49a3c0fbe5930d060
+    m_Position: {x: 428.20535, y: -0.00004263554, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.04915915, w: 0.998791}
+    m_Length: 252.76207
+    m_ParentId: 7
+    m_Color:
+      serializedVersion: 2
+      rgba: 4286643968
+  - m_Name: R_leg
+    m_Guid: 0a992c539efcd514aa0aeca276a54fd5
+    m_Position: {x: 60.23072, y: 125.89694, z: 0}
+    m_Rotation: {x: 0, y: -0, z: -0.9998258, w: 0.018669073}
+    m_Length: 714.31195
+    m_ParentId: 0
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294934528
+  - m_Name: R_lowLeg
+    m_Guid: 69766c607d2a02045ba14075205b50bd
+    m_Position: {x: 714.3119, y: -0.0011969035, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.10991673, w: -0.99394083}
+    m_Length: 678.32715
+    m_ParentId: 9
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294901888
+  - m_Name: R_foot
+    m_Guid: 0487996b7c8073a4bbec4037fc14a395
+    m_Position: {x: 678.32715, y: -0.000057145982, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.59636265, w: 0.8027152}
+    m_Length: 348.90588
+    m_ParentId: 10
+    m_Color:
+      serializedVersion: 2
+      rgba: 4286578943
+  - m_Name: L_leg
+    m_Guid: 5e38d48f2199ec24dbe707a460e9f7b0
+    m_Position: {x: 56.899414, y: -104.63358, z: 0}
+    m_Rotation: {x: 0, y: -0, z: 0.9972662, w: 0.07389321}
+    m_Length: 745.4896
+    m_ParentId: 0
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255615
+  - m_Name: L_lowLeg
+    m_Guid: f9d8cd557bc80ce4fba099e9764e40f6
+    m_Position: {x: 745.4897, y: -0.00006200305, z: 0}
+    m_Rotation: {x: 0, y: 0, z: -0.017653767, w: 0.9998442}
+    m_Length: 601.2627
+    m_ParentId: 12
+    m_Color:
+      serializedVersion: 2
+      rgba: 4278255360
+  - m_Name: L_foot
+    m_Guid: 6328e429b7aebf041b04f5276df67146
+    m_Position: {x: 601.2628, y: -0.00030326255, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.5836288, w: 0.8120206}
+    m_Length: 324.29587
+    m_ParentId: 13
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294967040
+  - m_Name: Torso_1
+    m_Guid: e53e0cbf3c894af41b02c065493ef7aa
+    m_Position: {x: 218.75893, y: 0.000016601189, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0.07440985, w: 0.9972278}
+    m_Length: 595.12555
+    m_ParentId: 0
+    m_Color:
+      serializedVersion: 2
+      rgba: 4294901760

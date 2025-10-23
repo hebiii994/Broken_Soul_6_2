@@ -48,7 +48,7 @@ MonoBehaviour:
   _dialogPanel: {fileID: 0}
   _voceOniricaText: {fileID: 0}
   _pensieroPrecarioText: {fileID: 0}
-  _pensieroDisplayTime: 5
+  _pensieroDisplayTime: 1
   _player: {fileID: 0}
   _playerStartPosition: {fileID: 0}
   _bossArenaStartPosition: {fileID: 0}
@@ -63,4 +63,5 @@ MonoBehaviour:
   _bossShortcutDoorSpawnPoint: {fileID: 0}
   _flashImage: {fileID: 0}
   _flashDuration: 1
-  _textFadeDuration: 1
+  _playerSpawnOnBoss: {fileID: 11400000, guid: efbbc4265683f8c49881d0fd1e1ca95e, type: 2}
+  _typingSpeed: 0.04
