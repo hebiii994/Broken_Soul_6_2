@@ -5,15 +5,17 @@ public class PlayerAnimator : MonoBehaviour
     private Animator _animator;
     private PlayerMovement _playerMovement;
     private PlayerInputController _inputController;
+    private Transform _characterGraphics;
 
     private Vector2 _lastMoveDirection;
     public Vector2 GetLastMoveDirection() => _lastMoveDirection;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         _inputController = GetComponent<PlayerInputController>();
         _playerMovement = GetComponent<PlayerMovement>();
+        _characterGraphics = transform.Find("Mc2");
         _lastMoveDirection = Vector2.down;
     }
 
@@ -37,6 +39,16 @@ public class PlayerAnimator : MonoBehaviour
         _animator.SetFloat("SlideDirX", _lastMoveDirection.x);
         _animator.SetFloat("SlideDirY", _lastMoveDirection.y);
         _animator.SetBool("IsGrounded", _playerMovement.IsGrounded);
+        float dirX = isMoving ? currentMoveInput.x : _lastMoveDirection.x;
+
+        if (dirX > 0.1f) 
+        {
+            _characterGraphics.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else if (dirX < -0.1f) 
+        {
+            _characterGraphics.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
     public void PlayAttackAnimation(Vector2 attackDirection)
     {

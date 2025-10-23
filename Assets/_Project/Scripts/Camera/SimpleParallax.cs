@@ -1,57 +1,83 @@
 using UnityEngine;
 
-public class SimpleParallax : MonoBehaviour
+[ExecuteInEditMode]
+public class StableParallax : MonoBehaviour
 {
     [Header("Parallax Settings")]
-    [Tooltip("Determina quanto velocemente questo strato si muove rispetto alla telecamera. " +
-             "Valori < 1: si muove più lentamente (sfondo). " +
-             "Valori > 1: si muove più velocemente (primo piano, foreground). " +
-             "Valore = 1: si muove esattamente con la telecamera (come il gameplay layer).")]
-    [Range(-2f, 2f)] 
+    [Range(0f, 2f)]
     public float parallaxEffectMultiplier = 0.5f;
 
-    [Tooltip("Se spuntato, il movimento di parallasse si applica anche all'asse Y. " +
-             "Deseleziona per parallasse solo orizzontale (tipico dei side-scroller).")]
     public bool applyToYAxis = false;
+    public bool applyToZAxis = false;
+
 
     private Camera mainCamera;
-    private Vector3 lastCameraPosition;
-    private float startZ;
+    private Vector3 cameraStartPosition;
+    private Vector3 layerStartPosition;
+
+    //public Vector3 DebugcameraStartPosition;
+    //public Vector3 DebuglayerStartPosition;
 
     void Start()
     {
         mainCamera = Camera.main;
         if (mainCamera == null)
         {
-            Debug.LogError("SimpleParallax: Main Camera non trovata! Assicurati che la tua telecamera abbia il tag 'MainCamera'.", this);
-            enabled = false; 
+            Debug.LogError("StableParallax: Main Camera non trovata!", this);
+            enabled = false;
             return;
         }
-
-        lastCameraPosition = mainCamera.transform.position;
-        startZ = transform.position.z; 
+        cameraStartPosition = mainCamera.transform.position;
+        layerStartPosition = transform.localPosition;
+        //DebugcameraStartPosition = mainCamera.transform.position;
+        //DebuglayerStartPosition = transform.localPosition;
     }
 
     void LateUpdate()
     {
+        if (mainCamera == null) return;
 
-        if (mainCamera == null || !mainCamera.gameObject.activeInHierarchy)
-        {
-            return;
-        }
+        Vector3 distanceMoved = mainCamera.transform.position - cameraStartPosition;
 
-        Vector3 cameraDeltaMovement = mainCamera.transform.position - lastCameraPosition;
+        float parallaxX = distanceMoved.x * parallaxEffectMultiplier;
+        float parallaxY = applyToYAxis ? (distanceMoved.y * parallaxEffectMultiplier) : 0f;
+        float parallaxZ = applyToZAxis ? (distanceMoved.z * parallaxEffectMultiplier) : 0f;
 
 
-        Vector3 parallaxMovement = new Vector3(
-            cameraDeltaMovement.x * parallaxEffectMultiplier,
-            applyToYAxis ? (cameraDeltaMovement.y * parallaxEffectMultiplier) : 0f, 
-            0f 
+            transform.localPosition = new Vector3(
+            layerStartPosition.x + parallaxX,
+            layerStartPosition.y + parallaxY,
+            layerStartPosition.z + parallaxZ
         );
-
-
-        transform.position += parallaxMovement;
-
-        lastCameraPosition = mainCamera.transform.position;
     }
+
+    //void EditorLateUpdate()
+    //{
+    //    if (mainCamera == null) return;
+
+    //    Vector3 distanceMoved = mainCamera.transform.position - DebugcameraStartPosition;
+
+    //    float parallaxX = distanceMoved.x * parallaxEffectMultiplier;
+    //    float parallaxY = applyToYAxis ? (distanceMoved.y * parallaxEffectMultiplier) : 0f;
+    //    float parallaxZ = applyToZAxis ? (distanceMoved.z * parallaxEffectMultiplier) : 0f;
+
+
+    //    transform.localPosition = new Vector3(
+    //    DebuglayerStartPosition.x + parallaxX,
+    //    DebuglayerStartPosition.y + parallaxY,
+    //    DebuglayerStartPosition.z + parallaxZ
+    //);
+    //}
+
+    //private void LateUpdate()
+    //{
+    //    if (Application.IsPlaying(this))
+    //    {
+    //        GameLateUpdate();
+    //    }
+    //    else
+    //    {
+    //        EditorLateUpdate();
+    //    }
+    //}
 }

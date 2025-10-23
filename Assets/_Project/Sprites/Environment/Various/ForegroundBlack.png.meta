@@ -1,0 +1,877 @@
+fileFormatVersion: 2
+guid: e9648bf45d09b6f4282cedc2d2b8386e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6576737822521828371
+    second: ForegroundBlack_0
+  - first:
+      213: 6564324449056366157
+    second: ForegroundBlack_1
+  - first:
+      213: -2349857294528557598
+    second: ForegroundBlack_2
+  - first:
+      213: 1407042003701117567
+    second: ForegroundBlack_3
+  - first:
+      213: 4078312625074338476
+    second: ForegroundBlack_4
+  - first:
+      213: -3651594845566231783
+    second: ForegroundBlack_5
+  - first:
+      213: 127406755517389559
+    second: ForegroundBlack_6
+  - first:
+      213: 6361853834428533509
+    second: ForegroundBlack_7
+  - first:
+      213: 4161776598912561029
+    second: ForegroundBlack_8
+  - first:
+      213: -8943523734295964301
+    second: ForegroundBlack_9
+  - first:
+      213: -8720536736961154750
+    second: ForegroundBlack_10
+  - first:
+      213: -6238279473038008527
+    second: ForegroundBlack_11
+  - first:
+      213: -7762997873253808238
+    second: ForegroundBlack_12
+  - first:
+      213: -7059240389064543594
+    second: ForegroundBlack_13
+  - first:
+      213: -8245108786580141929
+    second: ForegroundBlack_14
+  - first:
+      213: -8696337841762833315
+    second: ForegroundBlack_15
+  - first:
+      213: -3940782925352529065
+    second: ForegroundBlack_16
+  - first:
+      213: 4362282555476341246
+    second: ForegroundBlack_17
+  - first:
+      213: 7427699211303024139
+    second: ForegroundBlack_18
+  - first:
+      213: 1946786649522658792
+    second: ForegroundBlack_19
+  - first:
+      213: -7781995658130445584
+    second: ForegroundBlack_20
+  - first:
+      213: 5253176353053522782
+    second: ForegroundBlack_21
+  - first:
+      213: 2371220290995900790
+    second: ForegroundBlack_22
+  - first:
+      213: -858178571488727273
+    second: ForegroundBlack_23
+  - first:
+      213: 4275488404323342575
+    second: ForegroundBlack_24
+  - first:
+      213: -8519945303556612842
+    second: ForegroundBlack_25
+  - first:
+      213: 1210080362096730338
+    second: ForegroundBlack_26
+  - first:
+      213: -2863600818370808581
+    second: ForegroundBlack_27
+  - first:
+      213: 3822859264341084208
+    second: ForegroundBlack_28
+  - first:
+      213: 107613765374348785
+    second: ForegroundBlack_29
+  - first:
+      213: -6915461163871891176
+    second: ForegroundBlack_30
+  - first:
+      213: -34692217447902011
+    second: ForegroundBlack_31
+  - first:
+      213: -573456992137865729
+    second: ForegroundBlack_32
+  - first:
+      213: 7830389752183182900
+    second: ForegroundBlack_33
+  - first:
+      213: -8000134522007173520
+    second: ForegroundBlack_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ForegroundBlack_0
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 3197
+        width: 1286
+        height: 709
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: debd5b3abcbbab4a0800000000000000
+      internalID: -6576737822521828371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_1
+      rect:
+        serializedVersion: 2
+        x: 1592
+        y: 3182
+        width: 1164
+        height: 518
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4e9a60ae4a291b50800000000000000
+      internalID: 6564324449056366157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_2
+      rect:
+        serializedVersion: 2
+        x: 2891
+        y: 3171
+        width: 1057
+        height: 918
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2edc3ce9d31a36fd0800000000000000
+      internalID: -2349857294528557598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_3
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 2506
+        width: 1478
+        height: 631
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f72b8ae5f31d68310800000000000000
+      internalID: 1407042003701117567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_4
+      rect:
+        serializedVersion: 2
+        x: 2064
+        y: 2314
+        width: 1229
+        height: 812
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caafb8489b3199830800000000000000
+      internalID: 4078312625074338476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_5
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1609
+        width: 922
+        height: 855
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b906eb5dde25dc0800000000000000
+      internalID: -3651594845566231783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_6
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 1779
+        width: 459
+        height: 426
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fa5994e4c3a4c100800000000000000
+      internalID: 127406755517389559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_7
+      rect:
+        serializedVersion: 2
+        x: 2342
+        y: 1800
+        width: 612
+        height: 405
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50bc11a1b58d94850800000000000000
+      internalID: 6361853834428533509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_8
+      rect:
+        serializedVersion: 2
+        x: 3163
+        y: 1840
+        width: 743
+        height: 318
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f67b444c991c930800000000000000
+      internalID: 4161776598912561029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1197
+        width: 291
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37593096c8832e380800000000000000
+      internalID: -8943523734295964301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_10
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1091
+        width: 276
+        height: 381
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 241bfa68a0e6af680800000000000000
+      internalID: -8720536736961154750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_11
+      rect:
+        serializedVersion: 2
+        x: 1234
+        y: 1105
+        width: 152
+        height: 363
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13f55fffedd2d69a0800000000000000
+      internalID: -6238279473038008527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_17
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 1174
+        width: 455
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef1fc013fd0f98c30800000000000000
+      internalID: 4362282555476341246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_18
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 63
+        width: 414
+        height: 1468
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b067a2c341d741760800000000000000
+      internalID: 7427699211303024139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_19
+      rect:
+        serializedVersion: 2
+        x: 2606
+        y: 56
+        width: 430
+        height: 1478
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ed554aa420640b10800000000000000
+      internalID: 1946786649522658792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_20
+      rect:
+        serializedVersion: 2
+        x: 3108
+        y: 54
+        width: 423
+        height: 1482
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0faa0810e2cc00490800000000000000
+      internalID: -7781995658130445584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_21
+      rect:
+        serializedVersion: 2
+        x: 3720
+        y: 45
+        width: 250
+        height: 1505
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5bbc328f0807e840800000000000000
+      internalID: 5253176353053522782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_22
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 578
+        width: 359
+        height: 443
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67152099a4448e020800000000000000
+      internalID: 2371220290995900790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_23
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 583
+        width: 174
+        height: 410
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71fef84d2232714f0800000000000000
+      internalID: -858178571488727273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_24
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 985
+        width: 141
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe89efc1d06955b30800000000000000
+      internalID: 4275488404323342575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_25
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 574
+        width: 406
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61d10c313e213c980800000000000000
+      internalID: -8519945303556612842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_26
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 688
+        width: 301
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e0a3749da11bc010800000000000000
+      internalID: 1210080362096730338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_27
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 59
+        width: 122
+        height: 452
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf47d7a4a327248d0800000000000000
+      internalID: -2863600818370808581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_28
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 47
+        width: 258
+        height: 477
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0388c5d1f368d0530800000000000000
+      internalID: 3822859264341084208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_29
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 52
+        width: 64
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fd841246225e7100800000000000000
+      internalID: 107613765374348785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_30
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 67
+        width: 87
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811186d06b85700a0800000000000000
+      internalID: -6915461163871891176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundBlack_32
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 78
+        width: 391
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff598a967ebaa08f0800000000000000
+      internalID: -573456992137865729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d9163bf38a9ddde4ca3a100d0a9cb003
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ForegroundBlack_0: -6576737822521828371
+      ForegroundBlack_1: 6564324449056366157
+      ForegroundBlack_10: -8720536736961154750
+      ForegroundBlack_11: -6238279473038008527
+      ForegroundBlack_12: -7762997873253808238
+      ForegroundBlack_13: -7059240389064543594
+      ForegroundBlack_14: -8245108786580141929
+      ForegroundBlack_15: -8696337841762833315
+      ForegroundBlack_16: -3940782925352529065
+      ForegroundBlack_17: 4362282555476341246
+      ForegroundBlack_18: 7427699211303024139
+      ForegroundBlack_19: 1946786649522658792
+      ForegroundBlack_2: -2349857294528557598
+      ForegroundBlack_20: -7781995658130445584
+      ForegroundBlack_21: 5253176353053522782
+      ForegroundBlack_22: 2371220290995900790
+      ForegroundBlack_23: -858178571488727273
+      ForegroundBlack_24: 4275488404323342575
+      ForegroundBlack_25: -8519945303556612842
+      ForegroundBlack_26: 1210080362096730338
+      ForegroundBlack_27: -2863600818370808581
+      ForegroundBlack_28: 3822859264341084208
+      ForegroundBlack_29: 107613765374348785
+      ForegroundBlack_3: 1407042003701117567
+      ForegroundBlack_30: -6915461163871891176
+      ForegroundBlack_31: -34692217447902011
+      ForegroundBlack_32: -573456992137865729
+      ForegroundBlack_33: 7830389752183182900
+      ForegroundBlack_34: -8000134522007173520
+      ForegroundBlack_4: 4078312625074338476
+      ForegroundBlack_5: -3651594845566231783
+      ForegroundBlack_6: 127406755517389559
+      ForegroundBlack_7: 6361853834428533509
+      ForegroundBlack_8: 4161776598912561029
+      ForegroundBlack_9: -8943523734295964301
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
