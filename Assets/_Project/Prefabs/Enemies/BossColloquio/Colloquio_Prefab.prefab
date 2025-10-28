@@ -36,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.31, y: -59.92, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.16555734, y: 0.16555734, z: 0.16555734}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5523100239701367414}
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SortingLayerID: -692056053
   m_SortingLayer: 4
   m_SortingOrder: 56
-  m_Sprite: {fileID: 6480637470558136313, guid: e7f6e52a5111ff041950119e2be28161, type: 3}
+  m_Sprite: {fileID: -5627482539768452409, guid: 1cfbf6429415989438618490d651b021, type: 3}
   m_Color: {r: 0.96981126, g: 0.96981126, b: 0.96981126, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,9 +159,11 @@ MonoBehaviour:
   _firePoint: {fileID: 1009588382122373649}
   _renderBoss: {fileID: 6446181584176562574}
   _spritesFaces:
-  - {fileID: 6480637470558136313, guid: e7f6e52a5111ff041950119e2be28161, type: 3}
-  - {fileID: 4060722110276566171, guid: 7e7a130a8a9a94c40a7073fe474ba27b, type: 3}
-  - {fileID: -7408669347545930735, guid: 300b34266aebe9342b74c188c111207e, type: 3}
+  - {fileID: -5627482539768452409, guid: 1cfbf6429415989438618490d651b021, type: 3}
+  - {fileID: -4118520968726280322, guid: 4c8f34e8e92e3e34aa7d8d2a3446500c, type: 3}
+  - {fileID: 2009371639623103866, guid: 9b25ed0f89ef32b42abde50487875d59, type: 3}
+  _fightCameraZoom: 35
+  _normalCameraZoom: 20
   _playerSpawnCheckpointAfterDefeat: {fileID: 11400000, guid: a5cb8f813d4f1f2408b612250363f420, type: 2}
   _playerSpawnPointAfterDefeat: {fileID: 0}
 --- !u!114 &5642968859579097870
@@ -183,7 +185,7 @@ MonoBehaviour:
   _dialogueText: {fileID: 0}
   _tauntDuration: 3.5
   _analysisDuration: 1
-  _typingSpeed: 0.5
+  _typingSpeed: 0.04
   _defeatMonologue: Le faremo sapere...
   _defeatMonologueDuration: 5
   _dialogueBubble: {fileID: 0}
@@ -292,7 +294,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.65625, y: 1.71875}
+    oldSize: {x: 28.1, y: 34.43}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -367,7 +369,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.013568401, y: -0.8988323}
+  m_Offset: {x: -2.057598, y: -20.828075}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -377,7 +379,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 7.0457773, y: 3.5575027}
+  m_Size: {x: 80.97132, y: 43.415985}
   m_EdgeRadius: 0
 --- !u!114 &4007106343428721024
 MonoBehaviour:
@@ -416,7 +418,7 @@ Transform:
   m_GameObject: {fileID: 3629129218672840951}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.08, z: 0}
+  m_LocalPosition: {x: 0, y: -10.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

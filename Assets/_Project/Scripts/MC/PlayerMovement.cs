@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         if (_rb.linearVelocity != newVelocity) 
         {
             _rb.linearVelocity = newVelocity;
-            Debug.Log($"[PlayerMovement] Velocità impostata a {_rb.linearVelocity}");
+            //Debug.Log($"[PlayerMovement] Velocità impostata a {_rb.linearVelocity}");
         }
     }
 

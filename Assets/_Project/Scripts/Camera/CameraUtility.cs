@@ -9,9 +9,11 @@ public class CameraUtility : SingletonGeneric<CameraUtility>
     [Header("Riferimenti")]
     [SerializeField] private CinemachineCamera _virtualCamera;
 
-    public IEnumerator ZoomCameraRoutine(float targetSize, float duration)
+    public IEnumerator ZoomCameraRoutine(float targetFOV, float duration)
     {
-        float startSize = _virtualCamera.Lens.OrthographicSize;
+
+        float startFOV = _virtualCamera.Lens.FieldOfView;
+        Debug.Log($"[CameraUtility] ZOOM RICHIESTO: da {startFOV} a {targetFOV} in {duration} secondi.");
         float startTime = Time.time;
 
         while (Time.time < startTime + duration)
@@ -19,12 +21,16 @@ public class CameraUtility : SingletonGeneric<CameraUtility>
             float normalizedTime = (Time.time - startTime) / duration;
             float easedT = EaseInOutCubic(normalizedTime);
 
-            _virtualCamera.Lens.OrthographicSize = Mathf.Lerp(startSize, targetSize, easedT);
+
+            _virtualCamera.Lens.FieldOfView = Mathf.Lerp(startFOV, targetFOV, easedT);
+
 
             yield return null;
         }
 
-        _virtualCamera.Lens.OrthographicSize = targetSize;
+
+        _virtualCamera.Lens.FieldOfView = targetFOV;
+
     }
 
 

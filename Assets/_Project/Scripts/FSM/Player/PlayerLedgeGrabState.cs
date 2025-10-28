@@ -42,7 +42,7 @@ public class PlayerLedgeGrabState : PlayerState
 
         playerMovement.Rigidbody.MovePosition(grabPosition);
 
-        // playerAnimator.PlayLedgeHangAnimation();
+        playerAnimator.PlayLedgeGrabAnimation();
 
         Debug.Log($"[LedgeGrab] LedgePoint: {ledgePoint}, GrabPos: {grabPosition}, ClimbPos: {ledgeClimbPosition}");
     }
@@ -51,7 +51,7 @@ public class PlayerLedgeGrabState : PlayerState
     {
         if (inputController.JumpInput || inputController.MoveInput.y > 0.1f)
         {
-
+            playerAnimator.PlayClimbUpAnimation();
             stateMachine.ChangeState(new PlayerClimbUpState(stateMachine, ledgeClimbPosition));
             return;
         }

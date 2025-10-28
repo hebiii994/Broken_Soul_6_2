@@ -7,6 +7,7 @@ public class PlayerAnimator : MonoBehaviour
     private PlayerInputController _inputController;
     private Transform _characterGraphics;
 
+
     private Vector2 _lastMoveDirection;
     public Vector2 GetLastMoveDirection() => _lastMoveDirection;
 
@@ -17,8 +18,13 @@ public class PlayerAnimator : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
         _characterGraphics = transform.Find("Mc2");
         _lastMoveDirection = Vector2.down;
-    }
+        PlayerDeathHandler.OnPlayerDied += PlayDeathAnimation;
 
+    }
+    private void OnDestroy()
+    {
+        PlayerDeathHandler.OnPlayerDied -= PlayDeathAnimation;
+    }
     public void UpdateAnimationParameters()
     {
         Vector2 currentMoveInput = _inputController.MoveInput;
@@ -60,6 +66,18 @@ public class PlayerAnimator : MonoBehaviour
     public void PlayJumpAnimation()
     {
         _animator.SetTrigger("Jump");
+    }
+    public void PlayLedgeGrabAnimation()
+    {
+        _animator.SetTrigger("LedgeGrab");
+    }
+    public void PlayClimbUpAnimation()
+    {
+        _animator.SetTrigger("ClimbUp");
+    }
+    public void PlayDeathAnimation()
+    {
+        _animator.SetTrigger("Death");
     }
 }
   

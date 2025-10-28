@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Unity.Cinemachine;
 
+
 public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 {
     protected override bool ShouldBeDestroyOnLoad() => true;
@@ -26,15 +27,19 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
     [SerializeField] private TextMeshProUGUI _voceOniricaText;
     [SerializeField] private TextMeshProUGUI _pensieroPrecarioText;
     [SerializeField] private float _pensieroDisplayTime = 4f;
+    [SerializeField] private GameObject _controlsImageUI;
+    [SerializeField] private GameObject _controlsImageUI2;
 
     [Header("Scene Objects")]
     [SerializeField] private Transform _player;
+    [SerializeField] private GameObject _playerLightObject;
     [SerializeField] private Transform _playerStartPosition;
     [SerializeField] private Transform _bossArenaStartPosition;
     [SerializeField] private GameObject _bossObject;
     [SerializeField] private GameObject _doorPrefab;
     [SerializeField] private Transform[] _doorSpawnPoints;
     [SerializeField] private CinemachineCamera _playerCamera;
+    private IgnoreChoiceTrigger[] _choiceTriggers;
 
     [Header("Boss Fight Shortcut")]
     [SerializeField] private string _bossShortcutLabel = "Torna al colloquio";
@@ -46,6 +51,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 
     [Header("Flow")] 
     [SerializeField] private CheckpointSO _playerSpawnOnBoss;
+    [SerializeField] private string _mainMenuSceneName = "MainMenu";
 
     [Header("Typewriter Effect")]
     [SerializeField] private float _typingSpeed = 0.04f;
@@ -57,6 +63,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 
     private List<GameObject> _currentDoors = new List<GameObject>();
     private int _choicesIgnored = 0;
+    private bool _bossDefeated = false;
     private bool _isChoosing = false;
     private bool _isStoryLoading = true;
 
@@ -66,6 +73,8 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         if (_bossObject != null) _bossObject.SetActive(false);
         if (_dialogPanel != null) _dialogPanel.SetActive(false);
         if (_flashImage != null) _flashImage.gameObject.SetActive(false);
+        _choiceTriggers = FindObjectsByType<IgnoreChoiceTrigger>(FindObjectsSortMode.None);
+        SetChoiceTriggersActive(false);
     }
 
     private void Start()
@@ -105,13 +114,27 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
     public void LoadData(GameData data)
     {
         _introCompleted = data.hasCompletedIntro;
+        _bossDefeated = data.hasDefeatedFirstBoss;
 
         if (!_introCompleted)
         {
+            if (_playerLightObject != null)
+            {
+                _playerLightObject.SetActive(true);
+            }
             StartStory(data.inkStoryState);
         }
         else
         {
+            if (_playerLightObject != null)
+            {
+                _playerLightObject.SetActive(false);
+            }
+            if (_controlsImageUI != null)
+            {
+                _controlsImageUI.SetActive(false);
+                _controlsImageUI2.SetActive(false);
+            }
             _isStoryLoading = false;
             RefreshView();
         }
@@ -125,6 +148,17 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         }
     }
 
+    private void SetChoiceTriggersActive(bool active)
+    {
+        if (_choiceTriggers == null) return;
+        foreach (var trigger in _choiceTriggers)
+        {
+            if (trigger != null)
+            {
+                trigger.gameObject.SetActive(active);
+            }
+        }
+    }
     private void RefreshView()
     {
         ClearScene();
@@ -132,7 +166,10 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         if (_introCompleted)
         {
             CleanupIntroObjects();
-            DisplayBossShortcutDoor();
+            if (!_bossDefeated)
+            {
+                DisplayBossShortcutDoor();
+            }
             return;
         }
 
@@ -149,11 +186,18 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         }
 
         DisplayChoices();
+        SetChoiceTriggersActive(true);
     }
 
     public void MakeChoice(int choiceIndex)
     {
         if (_isChoosing) return;
+
+        if (_controlsImageUI != null && _controlsImageUI.activeInHierarchy)
+        {
+            _controlsImageUI.SetActive(false);
+            _controlsImageUI2.SetActive(false);
+        }
 
         if (choiceIndex == -1) 
         {
@@ -164,9 +208,14 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         StartCoroutine(ChoiceTransitionRoutine(choiceIndex));
     }
 
-
+    public void NotifyBossDefeated()
+    {
+        _bossDefeated = true;
+        //RefreshView(); 
+    }
     private IEnumerator ChoiceTransitionRoutine(int choiceIndex)
     {
+        SetChoiceTriggersActive(false);
         _isChoosing = true;
         PlayerInputController inputController = _player.GetComponent<PlayerInputController>();
         if (inputController != null) inputController.enabled = false;
@@ -235,10 +284,16 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 
     public void OnPlayerIgnoredChoice()
     {
+        if (_controlsImageUI != null && _controlsImageUI.activeInHierarchy)
+        {
+            _controlsImageUI.SetActive(false);
+            _controlsImageUI2.SetActive(false);
+        }
         if (_isChoosing || _story == null || _story.currentChoices.Count == 0)
         {
             return;
         }
+        //SetChoiceTriggersActive(false);
         if (_isChoosing) return;
         _choicesIgnored++;
         string knotToJumpTo = "";
@@ -265,8 +320,8 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         PlayerInputController inputController = _player.GetComponent<PlayerInputController>();
         if (inputController != null) inputController.enabled = false;
         string originalStoryState = _story.state.ToJson();
-        ClearScene();
-
+        //ClearScene();
+        SetDoorsActive(false);
         if (_flashImage != null)
         {
             _flashImage.gameObject.SetActive(true);
@@ -297,7 +352,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
                 _voceOniricaText.text = specialLine;
             }
         }
-
+        SetDoorsActive(true);
         if (_flashImage != null)
         {
             yield return _flashImage.DOFade(0, _flashDuration / 2).WaitForCompletion();
@@ -314,7 +369,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         if (psm != null) psm.ChangeState(new PlayerIdleState(psm));
 
         _isChoosing = false;
-        RefreshView();
+        //RefreshView();
     }
 
     private bool HandleSpecialTags(List<string> tags)
@@ -331,6 +386,18 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         }
         return false;
     }
+
+    private void SetDoorsActive(bool active)
+    {
+        foreach (GameObject door in _currentDoors)
+        {
+            if (door != null)
+            {
+                door.SetActive(active);
+            }
+        }
+    }
+
     public bool IsStoryLoading()
     {
         return _isStoryLoading;
@@ -338,6 +405,10 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
     private IEnumerator BossFightTransitionRoutine()
     {
         _isChoosing = true;
+        if (_playerLightObject != null)
+        {
+            _playerLightObject.SetActive(false);
+        }
         ClearScene();
         CleanupIntroObjects();
         PlayerInputController inputController = _player.GetComponent<PlayerInputController>();
@@ -481,6 +552,15 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
 
     private IEnumerator ShowSecretEnding()
     {
+        if (_playerCamera != null)
+        {
+            _playerCamera.Follow = null;
+            _playerCamera.LookAt = null;
+        }
+        if (_playerLightObject != null)
+        {
+            _playerLightObject.SetActive(false);
+        }
         ClearScene();
         _player.GetComponent<PlayerStateMachine>().enabled = false;
         _player.GetComponent<PlayerMovement>().StopMovement();
@@ -490,13 +570,25 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         _pensieroPrecarioText.gameObject.SetActive(true);
         _dialogPanel.SetActive(true);
         yield return _writingCoroutine;
-
+        yield return new WaitForSeconds(1.5f);
 
         _writingCoroutine = StartCoroutine(WriteTextCoroutine(_pensieroPrecarioText, "...di non essere."));
         yield return _writingCoroutine;
+        yield return new WaitForSeconds(3.0f);
 
         Debug.Log("GAME OVER - Ritorno al menu principale...");
-        // Esempio: SceneManager.LoadScene("MainMenu");
+        if (ScreenFader.Instance != null)
+        {
+            yield return ScreenFader.Instance.FadeOut(2f); 
+        }
+        else
+        {
+
+            yield return new WaitForSeconds(2f);
+        }
+
+
+        SceneManager.LoadScene(_mainMenuSceneName);
     }
     private IEnumerator WriteTextCoroutine(TextMeshProUGUI textComponent, string textToWrite)
     {

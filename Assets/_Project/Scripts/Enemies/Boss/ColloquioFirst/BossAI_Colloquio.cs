@@ -43,6 +43,14 @@ public class BossAI_Colloquio : MonoBehaviour
     [SerializeField] private SpriteRenderer _renderBoss;
     [SerializeField] private List<Sprite> _spritesFaces;
 
+    [Header("Camera Settings")]
+    [Tooltip("Valore di zoom (Orthographic Size) durante la boss fight")]
+    [SerializeField] private float _fightCameraZoom = 35f;
+    [Tooltip("Valore di zoom (Orthographic Size) prima e dopo la fight")]
+    [SerializeField] private float _normalCameraZoom = 20f;
+
+    public float NormalCameraZoom => _normalCameraZoom;
+
     [Header("Flow")]
     [SerializeField] private CheckpointSO _playerSpawnCheckpointAfterDefeat;
 
@@ -119,11 +127,11 @@ public class BossAI_Colloquio : MonoBehaviour
             switch (_currentState)
             {
                 case BossState.Analyzing:
+                    CameraUtility.Instance.StartCoroutine(CameraUtility.Instance.ZoomCameraRoutine(_fightCameraZoom, 1.5f));
                     yield return _bossDialogue.ShowIntroAnalysis();
-
                     ChangeState(BossState.Idle);
 
-                    CameraUtility.Instance.StartCoroutine(CameraUtility.Instance.ZoomCameraRoutine(6.5f, 1.5f));
+                    
                     _canMove = false;
                     break;
 
@@ -302,7 +310,7 @@ public class BossAI_Colloquio : MonoBehaviour
     public void OnPlayerDefeated()
     {
         if (_fightIsOver) return;
-        CameraUtility.Instance.StartCoroutine(CameraUtility.Instance.ZoomCameraRoutine(4.5f, 1.5f));
+        CameraUtility.Instance.StartCoroutine(CameraUtility.Instance.ZoomCameraRoutine(_normalCameraZoom, 1.5f));
         _fightIsOver = true;
         if (_attackCoroutine != null) StopCoroutine(_attackCoroutine);
         if (_moveRoutine != null) StopCoroutine(_moveRoutine);
@@ -327,10 +335,27 @@ public class BossAI_Colloquio : MonoBehaviour
         PlayerStateMachine player = FindFirstObjectByType<PlayerStateMachine>(FindObjectsInactive.Include);
         if (player != null)
         {
-
-            player.transform.position = _playerSpawnPointAfterDefeat.position;
-            SaveManager.Instance.SetCurrentCheckpoint(_playerSpawnCheckpointAfterDefeat);
             player.gameObject.SetActive(true);
+            if (player.TryGetComponent<HealthSystem>(out var health))
+            {
+                health.Heal(health.MaxHealth); 
+            }
+            if (player.TryGetComponent<Rigidbody2D>(out var rb))
+            {
+                rb.bodyType = RigidbodyType2D.Dynamic;
+            }
+            Animator playerAnimatorComponent = player.GetComponentInChildren<Animator>();
+            if (playerAnimatorComponent != null)
+            {
+                playerAnimatorComponent.ResetTrigger("Death");
+
+                playerAnimatorComponent.Play("IdleBlendTree", 0, 0f);
+            }
+            player.transform.position = _playerSpawnPointAfterDefeat.position;
+            player.enabled = true;
+            player.ChangeState(new PlayerIdleState(player));
+
+            SaveManager.Instance.SetCurrentCheckpoint(_playerSpawnCheckpointAfterDefeat);
             SaveManager.Instance.SaveGame();
         }
 

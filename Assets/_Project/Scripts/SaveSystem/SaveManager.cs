@@ -1,44 +1,69 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UnityEngine;
 using Unity.Cinemachine;
+using UnityEngine;
 
 public class SaveManager : SingletonGeneric<SaveManager>
 {
     protected override bool ShouldBeDestroyOnLoad() => false;
 
-    [Header("File Configuration")]
-    [SerializeField] private string _fileName = "savegame.json";
+    public const int NUM_SLOTS = 3;
 
 
     private GameData _gameData;
     private List<ISaveable> _saveableObjects;
-    private string _filePath;
+    private int _currentSlotID = 1;
 
+    private PlayerStateMachine _player;
+
+    private string GetFilePath(int slotID)
+    {
+        return Path.Combine(UnityEngine.Application.persistentDataPath, $"savegame_{slotID}.json");
+    }
 
     protected override void Awake()
     {
         base.Awake();
-        _filePath = Path.Combine(UnityEngine.Application.persistentDataPath, _fileName);
     }
 
-    private void Start()
+    public GameData PeekSaveData(int slotID)
     {
-        _saveableObjects = FindAllSaveableObjects();
-        LoadGame();
-        GameManager.Instance.SetGameReady();
-    }
-
-    public void LoadGame()
-    {
-
-        if (File.Exists(_filePath))
+        string path = GetFilePath(slotID);
+        if (File.Exists(path))
         {
             try
             {
-                string dataAsJson = File.ReadAllText(_filePath);
+                string dataAsJson = File.ReadAllText(path);
+                return JsonUtility.FromJson<GameData>(dataAsJson);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Errore nel leggere lo slot {slotID}: {e}");
+                return null;
+            }
+        }
+        return null; 
+    }
+
+    public void LoadGame(int slotID, bool isNewGame)
+    {
+        _currentSlotID = slotID;
+        string path = GetFilePath(slotID);
+
+        if (isNewGame || !File.Exists(path))
+        {
+            NewGame();
+            Debug.Log($"Inizio NUOVA PARTITA nello slot {slotID}.");
+        }
+        else
+        {
+            try
+            {
+                string dataAsJson = File.ReadAllText(path);
                 _gameData = JsonUtility.FromJson<GameData>(dataAsJson);
+                Debug.Log($"CARICAMENTO riuscito dallo slot {slotID}.");
             }
             catch (System.Exception e)
             {
@@ -46,29 +71,40 @@ public class SaveManager : SingletonGeneric<SaveManager>
                 NewGame();
             }
         }
-        else
-        {
-            NewGame();
-        }
 
         if (_gameData.hasDefeatedFirstBoss)
         {
-
             _gameData.lastCheckpointId = "GameRealStartPoint";
         }
         else if (_gameData.hasCompletedIntro)
         {
-
             _gameData.lastCheckpointId = "CorridorStartPosition";
         }
 
+        StartCoroutine(CompleteGameSetupRoutine());
+    }
 
+    private IEnumerator CompleteGameSetupRoutine()
+    {
+        yield return null;
+
+        _player = FindAnyObjectByType<PlayerStateMachine>();
+        if (_player == null)
+        {
+            Debug.LogError("PlayerStateMachine non trovato nella nuova scena. Impossibile teletrasportare.");
+        }
+
+        _saveableObjects = FindAllSaveableObjects();
         foreach (ISaveable saveable in _saveableObjects)
         {
             saveable.LoadData(_gameData);
         }
 
         MovePlayerToCheckpoint(_gameData.lastCheckpointId);
+
+        GameManager.Instance.SetGameReady();
+
+        Debug.Log("SAVE MANAGER: Setup completato. Game Ready invocato.");
     }
 
     public void NewGame()
@@ -78,6 +114,11 @@ public class SaveManager : SingletonGeneric<SaveManager>
 
     public void SaveGame()
     {
+        if (_gameData == null)
+        {
+            Debug.LogWarning("SaveGame() chiamato ma _gameData è null. Salvataggio saltato.");
+            return;
+        }
         _saveableObjects = FindAllSaveableObjects();
         UpdateCurrentCheckpoint();
 
@@ -86,10 +127,28 @@ public class SaveManager : SingletonGeneric<SaveManager>
             saveable.SaveData(ref _gameData);
         }
         string dataAsJson = JsonUtility.ToJson(_gameData, true);
-        File.WriteAllText(_filePath, dataAsJson);
-        UnityEngine.Debug.Log("Gioco salvato in: " + _filePath);
+        File.WriteAllText(GetFilePath(_currentSlotID), dataAsJson);
+        UnityEngine.Debug.Log($"Gioco salvato nello slot {_currentSlotID} in: {GetFilePath(_currentSlotID)}");
     }
 
+    public void ResetSave(int slotID)
+    {
+        string path = GetFilePath(slotID);
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            Debug.Log($"Salvamento slot {slotID} resettato.");
+        }
+    }
+
+    public void SetPlayerName(string newName)
+    {
+        if (_gameData != null)
+        {
+            _gameData.playerName = newName;
+            SaveGame();
+        }
+    }
     public void SetCurrentCheckpoint(CheckpointSO checkpointData)
     {
         if (_gameData != null && checkpointData != null)
@@ -110,6 +169,10 @@ public class SaveManager : SingletonGeneric<SaveManager>
         if (_gameData != null)
         {
             _gameData.hasDefeatedFirstBoss = true;
+        }
+        if (NarrativeManager.Instance != null)
+        {
+            NarrativeManager.Instance.NotifyBossDefeated();
         }
     }
     private void MovePlayerToCheckpoint(string checkpointId)

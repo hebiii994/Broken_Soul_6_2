@@ -3,6 +3,7 @@
 public class GameData
 {
     //variabili da salvare
+    public string playerName;
     public int playerMaxHealth;
     public int playerMaxNostalgia;
     public string inkStoryState;
@@ -14,6 +15,7 @@ public class GameData
 
     public GameData()
     {
+        this.playerName = "No Name";
         this.playerMaxHealth = 0; 
         this.playerMaxNostalgia = 0;
         this.inkStoryState = "";
