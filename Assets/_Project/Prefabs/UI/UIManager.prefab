@@ -63,5 +63,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NostalgiaUI
   _nostalgiaSlider: {fileID: 0}
   _playerNostalgiaSystem: {fileID: 0}
-  _widthPerNostalgiaPoint: 1.5
+  _widthPerNostalgiaPoint: 1
   _animationDuration: 1

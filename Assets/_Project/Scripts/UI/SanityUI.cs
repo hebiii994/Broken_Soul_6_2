@@ -17,6 +17,7 @@ public class SanityUI : MonoBehaviour
     private void Awake()
     {
         _sliderRectTransform = _sanitySlider.GetComponent<RectTransform>();
+        _sanitySlider.value = 0;
     }
 
     private void OnEnable()
@@ -37,7 +38,7 @@ public class SanityUI : MonoBehaviour
             float targetWidth = max * _widthPerHealthPoint;
             _sliderRectTransform.DOSizeDelta(new Vector2(targetWidth, _sliderRectTransform.sizeDelta.y), _animationDuration);
 
-            DOTween.To(() => _sanitySlider.maxValue, x => _sanitySlider.maxValue = x, max, _animationDuration);
+            _sanitySlider.maxValue = max;
         }
 
 
