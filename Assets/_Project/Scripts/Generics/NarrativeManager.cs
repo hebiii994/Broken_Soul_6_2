@@ -557,10 +557,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
             _playerCamera.Follow = null;
             _playerCamera.LookAt = null;
         }
-        if (_playerLightObject != null)
-        {
-            _playerLightObject.SetActive(false);
-        }
+
         ClearScene();
         _player.GetComponent<PlayerStateMachine>().enabled = false;
         _player.GetComponent<PlayerMovement>().StopMovement();
