@@ -2,6 +2,9 @@
 
 **Un platform 2D che esplora temi legati alla nostalgia, le scelte che ci definiscono e l'ansia sociale di chi è nato negli anni 90\.**
 
+<img width="1108" height="622" alt="image" src="https://github.com/user-attachments/assets/0d1c4c8c-345e-4fbf-9871-2c092d27de1e" />
+
+
 ## **Informazioni sul Gioco**
 
 Broken Soul è un platform 2D d'atmosfera che esplora i temi della memoria, dell'ansia e delle scelte della vita. Il giocatore veste i panni di un "precario" che, per affrontare un misterioso e opprimente colloquio di lavoro, deve letteralmente rivivere il proprio passato.
