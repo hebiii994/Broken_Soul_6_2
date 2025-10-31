@@ -310,7 +310,14 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         }
         if (!string.IsNullOrEmpty(knotToJumpTo))
         {
-            StartCoroutine(ShowSpecialDialogue(knotToJumpTo));
+            if (knotToJumpTo == "Finale_Segreto")
+            {
+                TriggerSecretEnding();
+            }
+            else
+            {
+                StartCoroutine(ShowSpecialDialogue(knotToJumpTo));
+            }
         }
     }
 
@@ -336,6 +343,7 @@ public class NarrativeManager : SingletonGeneric<NarrativeManager>, ISaveable
         }
 
         _story.ChoosePathString(knot);
+
         if (_story.canContinue)
         {
             string specialLine = _story.Continue();

@@ -8,7 +8,7 @@ public class IgnoreChoiceTrigger : MonoBehaviour
         {
             
             NarrativeManager.Instance.OnPlayerIgnoredChoice();
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
