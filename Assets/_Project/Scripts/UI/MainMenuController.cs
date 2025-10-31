@@ -20,6 +20,9 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button[] _slotButtons = new Button[SaveManager.NUM_SLOTS];
     [SerializeField] private Button[] _resetSlotButtons = new Button[SaveManager.NUM_SLOTS];
 
+    [Header("Main Controls")]
+    [SerializeField] private Button _quitButton;
+
     [Header("Name Input Specifics")]
     [SerializeField] private ControllerTextInput _controllerTextInputScript;
 
@@ -67,6 +70,10 @@ public class MainMenuController : MonoBehaviour
 
         _mainResetButton.onClick.AddListener(ShowResetConfirmation);
 
+        if (_quitButton != null)
+        {     
+            _quitButton.onClick.AddListener(() => GameExitHandler.Instance.DoQuitGame());
+        }
 
         for (int i = 0; i < SaveManager.NUM_SLOTS; i++)
         {
