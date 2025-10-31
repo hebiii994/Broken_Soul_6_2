@@ -45,6 +45,16 @@ public class EndingTrigger : MonoBehaviour
             {
                 psm.PlayerMovement.StopMovement(); 
             }
+
+            PlayerAnimator playerAnim = psm.GetComponent<PlayerAnimator>();
+            if (playerAnim != null)
+            {
+                Animator animatorComponent = playerAnim.GetComponentInChildren<Animator>();
+                if (animatorComponent != null)
+                {
+                    animatorComponent.Play("IdleBlendTree", 0, 0f);
+                }
+            }
         }
 
         if (_toBeContinuedText != null)

@@ -328,7 +328,7 @@ public class BossAI_Colloquio : MonoBehaviour
     private IEnumerator TeleportPlayerAndStartGame()
     {
 
-         yield return ScreenFader.Instance.FadeOut(1.5f); 
+         //yield return ScreenFader.Instance.FadeOut(1.5f); 
 
 
         SaveManager.Instance.MarkFirstBossAsDefeated(); 

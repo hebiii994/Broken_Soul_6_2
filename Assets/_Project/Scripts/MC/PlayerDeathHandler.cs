@@ -21,6 +21,10 @@ public class PlayerDeathHandler : MonoBehaviour, IDeathHandler
         {
             _psm.enabled = false;
         }
+        if (ScreenFader.Instance != null)
+        {
+            ScreenFader.Instance.FadeOut(1.2f);
+        }
         OnPlayerDied?.Invoke();
         StartCoroutine(DeathSequenceRoutine());
     }
